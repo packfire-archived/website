@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Packfire Framework for PHP</title>
+        <base href="{{rootUrl}}" target="_top" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="assets/styles/global.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div id="navMain" class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="{{rootUrl}}">
+                            <img src="assets/images/packfire.smalllogo.dark.png" />
+                        </a>
+                        <ul class="nav">
+                            {{&menu}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="pnlJumbo" class="row">
+                <div id="pnlIntro" class="span8">
+                    <div>
+                        <h1>Packfire Framework for PHP</h1>
+                        <p>Be surprised at how fast you can build a web application with a pack of fire.</p>
+                    </div>
+                </div>
+                <div id="pnlDownload" class="span4">
+                    <div>
+                        <p>The OOP Framework for PHP. </p>
+                        <p>Be amazed. Start now.</p>
+                        <div>
+                        <a href="#" class="btn btn-large btn-success"><i class="icon-thumbs-up icon-white"></i> Get Started</a>
+                        <a href="http://github.com/packfire" target="_blank" class="btn btn-large btn-primary"><i class="icon-flag icon-white"></i> View on Github</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <div class="alert alert-success">
+                        <span><i class="icon-ok-circle"></i> Demo coming soon C:</span>
+                    </div>
+                </div>
+            </div>
+            <div id="pnlFeatures" class="row">
+                {{#features}}
+                <div class="span4">
+                    <div>
+                        <h3>{{&title}}</h3>
+                        <p>{{&text}}</p>
+                    </div>
+                </div>
+                {{/features}}
+            </div>
+            <footer>
+                <div class="row">
+                    <div class="span12">
+                        <span>&copy; Copyright 2012 <a href="http://twitter.com/_mauris" target="_blank">Sam-Mauris Yong</a>, All Rights Reserved. This website's source code is <a href="http://github.com/packfire/website" target="_blank">hosted on Github</a>.</span>
+                    </div>
+                    <div class="span12">
+                        <span>Packfire Framework and this website are both released open source under the New BSD License.</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript" src="assets/scripts/jquery.js"></script>
+        <script type="text/javascript" src="assets/scripts/bootstrap.js"></script>
+    </body>
+</html>

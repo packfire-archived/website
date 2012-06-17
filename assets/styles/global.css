@@ -1,0 +1,100 @@
+/* 
+    Document   : global
+    Created on : Feb 18, 2012, 1:39:38 PM
+    Author     : Sam-Mauris Yong / mauris@hotmail.sg
+    Copyright  : Copyright (c) 2010-2012, Sam-Mauris Yong
+    Description:
+        The main CSS
+*/
+
+*{
+    padding:0;
+    border:none;
+    margin:0;
+}
+
+body{
+    background: #000 url('../images/background.jpg') center top no-repeat;
+    color:#FFF;
+}
+
+p{
+    font: normal 13px/1.8 'Lucida Grande', 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif;
+}
+
+.navbar .brand{
+    color:#FFF;
+}
+.navbar .brand:active{
+    padding: 9px 20px 11px;
+}
+
+.navbar .nav > li > a {
+    line-height: 40px;
+}
+
+.navbar .nav > li > a:active{
+    padding: 10px;
+}
+
+#navMain{
+    margin-top:20px;
+}
+
+#pnlJumbo{
+    margin-bottom:20px;
+}
+
+#pnlIntro{
+    background:#FFF;
+    background:rgba(255,255,255,0.8);
+    border-radius: 5px 0px 0px 5px;
+    height:200px;
+    color:#000;
+}
+
+#pnlIntro, #pnlDownload, .navbar .navbar-inner, #pnlFeatures > div{
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+#pnlIntro > div{
+    padding: 60px 20px;
+}
+
+#pnlDownload > div{
+    padding: 40px 20px;
+}
+
+#pnlIntro h1{
+    font-size: 36px;
+    margin-bottom:10px;
+}
+
+#pnlIntro p{
+    font-size: 15px;
+}
+
+#pnlDownload{
+    background:#FFF;
+    border-radius: 0px 5px 5px 0px;
+    height:200px;
+    margin:0;
+    width:320px;
+    color:#333;
+}
+
+#pnlFeatures > div{
+    background:rgba(0,0,0,0.8);
+    color:#FFF;
+    border-radius: 5px;
+    margin-bottom:20px;
+}
+#pnlFeatures h3{
+    margin-bottom:10px;
+}
+#pnlFeatures > div > div{
+    padding:10px;
+}
+footer > div{
+    margin: 20px 0;
+}
