@@ -15,7 +15,7 @@ app:
   debug: false
 
 security:
-  disabled: false
+  disabled: true
   override: false
   identity: null
   

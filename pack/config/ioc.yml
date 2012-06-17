@@ -14,20 +14,37 @@
 #    - param1
 #    - param2
 
-#security: # the security module is optional. The default security module does not identify or authenticate the users
-#  class: app.AppSecurityModule
-session.flash:
-  class: packfire.session.pSessionFlash
+security: # the security module is optional. The default security module does not identify or authenticate the users
+  class: app.AppSecurityModule
+
+# the messenger service
+messenger:
+  class: packfire.session.pMessenger
+
 form.feedback:
   class: packfire.form.pFormFeedback
+  
+#configure the logging functionality
 logger:
   class: packfire.log.pLogger
   parameters: 
     - 'pack/storage/log/default.log'
+
+#set the session storage method
 session.storage:
   class: packfire.session.storage.pSessionStorage
   parameters: []
+  
+# set the cache to use
 cache:
   class: packfire.cache.pFileCache
+  
+# this sets the debugger output method
+debugger.output:
+  class: packfire.debugger.pConsoleDebugOutput
+  
+router:
+  class: packfire.routing.pRouter
+  
 
 ...
