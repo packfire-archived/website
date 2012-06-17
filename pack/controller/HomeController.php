@@ -44,4 +44,8 @@ class HomeController extends AppController {
         $this->render();
     }
     
+    function doGetStarted(){
+        $this->render();
+    }
+    
 }

@@ -41,7 +41,7 @@ p{
     margin-top:20px;
 }
 
-#pnlJumbo{
+#pnlJumbo, #pnlMini{
     margin-bottom:20px;
 }
 
@@ -49,19 +49,34 @@ p{
     background:#FFF;
     background:rgba(255,255,255,0.8);
     border-radius: 5px 0px 0px 5px;
-    height:200px;
     color:#000;
+}
+
+#pnlMini #pnlIntro, #pnlMini #pnlDownload{
+    height:100px;
+}
+
+#pnlJumbo #pnlIntro, #pnlJumbo #pnlDownload{
+    height:200px;
 }
 
 #pnlIntro, #pnlDownload, .navbar .navbar-inner, #pnlFeatures > div{
     box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
-#pnlIntro > div{
+#pnlMini #pnlIntro > div{
+    padding: 15px 20px;
+}
+
+#pnlMini #pnlDownload > div{
+    padding: 20px 20px;
+}
+
+#pnlJumbo #pnlIntro > div{
     padding: 60px 20px;
 }
 
-#pnlDownload > div{
+#pnlJumbo #pnlDownload > div{
     padding: 40px 20px;
 }
 
@@ -77,24 +92,33 @@ p{
 #pnlDownload{
     background:#FFF;
     border-radius: 0px 5px 5px 0px;
-    height:200px;
     margin:0;
     width:320px;
     color:#333;
 }
 
 #pnlFeatures > div{
-    background:rgba(0,0,0,0.8);
-    color:#FFF;
-    border-radius: 5px;
     margin-bottom:20px;
 }
+
 #pnlFeatures h3{
     margin-bottom:10px;
 }
-#pnlFeatures > div > div{
+#pnlFeatures > div > div, .content-box > div{
     padding:10px;
 }
+
+.content-box, #pnlFeatures > div{
+    background: rgba(0,0,0,0.8);
+    border-radius:5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    color:#FFF;
+}
+
+.spaced-content{
+    padding: 50px 20px;
+}
+
 footer > div{
     margin: 20px 0;
 }

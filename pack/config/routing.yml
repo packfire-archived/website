@@ -13,5 +13,10 @@ home:
   rewrite: "/"
   method: "get"
   actual: "Home"
+
+getStarted:
+  rewrite: "/get-started"
+  method: "get"
+  actual: "Home:getStarted"
   
 ...

@@ -15,14 +15,14 @@ pload('view.MenuView');
 class HomeIndexView extends AppView {
     
     protected function create() {
-        
-        $rootUrl = $this->route('home');
         $menu = new MenuView(0);
         $menu->copyBucket($this);
-        $this->define('features', $this->state->get('features'));
         $this->define('menu', $menu);
-        $this->define('rootUrl', $rootUrl);
-        $this->define('version', __PACKFIRE_VERSION__);
+        
+        $this->define('features', $this->state->get('features'));
+        
+        $this->define('link.getstarted', $this->route('getStarted'));
+        $this->define('rootUrl', $this->route('home'));
     }
 
 }
