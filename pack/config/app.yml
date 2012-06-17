@@ -11,7 +11,7 @@
 app:
   name: "Packfire Framework for PHP"
   version: "1.0-sofia"
-  rootUrl: "http://localhost/packfire-web"
+  rootUrl: "http://mauris.sg/packfire"
   debug: false
 
 security:

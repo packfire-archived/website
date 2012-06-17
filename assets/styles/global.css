@@ -14,7 +14,7 @@
 }
 
 body{
-    background: #000 url('../images/background.jpg') center top no-repeat;
+    background: #000 url('http://i.imgur.com/yXpQ0.jpg') center top no-repeat;
     color:#FFF;
 }
 
@@ -121,4 +121,13 @@ p{
 
 footer > div{
     margin: 20px 0;
+}
+
+.dropdown .caret {
+    margin-top: -5px;
+    vertical-align:middle;
+}
+
+#ddmSocial li{
+    padding:5px;
 }
