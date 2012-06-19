@@ -38,7 +38,7 @@ class HomeController extends AppController {
             ),
             array(
                 'title' => 'Modern technologies',
-                'text' => 'Emerging server-side technologies and concepts such as JSON, YAML, Mustache and IoC are incorporated into Packfire for great development efficiency with gentle learning curve.'
+                'text' => 'Emerging server-side technologies and concepts such as JSON, YAML, Mustache, LINQ and IoC are incorporated into Packfire for great development efficiency with gentle learning curve.'
             )
         );
         $this->render();

@@ -108,6 +108,11 @@ p{
     padding:10px;
 }
 
+.row{
+    margin-top:20px;
+    margin-bottom:20px;;
+}
+
 .content-box, #pnlFeatures > div{
     background: rgba(0,0,0,0.8);
     border-radius:5px;
