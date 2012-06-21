@@ -26,10 +26,5 @@ class AppSecurityModule extends pSecurityModule {
     public function deauthenticate() {
         parent::deauthenticate();
     }
-
-    public function identity($newIdentity = null) {
-        return parent::identity($newIdentity);
-    }
-
     
 }

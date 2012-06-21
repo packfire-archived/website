@@ -8,33 +8,9 @@
 #
 
 ---
+
 app:
-  name: "Packfire Framework for PHP"
-  version: "1.0-sofia"
   rootUrl: "http://localhost/packfire-web"
   debug: true
-
-security:
-  disabled: true
-  override: false
-  identity: null
-
-session:
-  name: packfire
-  lifetime: 3600
-  http: true
-  secure: false
   
-routing:
-  enabled: true
-  caching: true
-
-database:
-#  default: 
-#    driver: mysql
-#    host: localhost
-#    dbname: packfire
-#    user: root 
-#    password: password
-
 ...

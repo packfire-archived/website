@@ -21,9 +21,6 @@ security: # the security module is optional. The default security module does no
 messenger:
   class: packfire.session.pMessenger
 
-form.feedback:
-  class: packfire.form.pFormFeedback
-  
 #configure the logging functionality
 logger:
   class: packfire.log.pLogger
