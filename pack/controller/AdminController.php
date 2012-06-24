@@ -78,7 +78,7 @@ class AdminController extends AppController {
                     'Fields cannot be empty.'
                 );
         }
-        
+        $this->redirect($this->route('admin.home'));
     }
     
     public function getSignIn(){
