@@ -24,4 +24,24 @@ screencasts:
   method: "get"
   actual: "Home:screencasts"
   
+admin.home:
+  rewrite: "/admin"
+  method: "get"
+  actual: "Admin"
+  
+adminSignIn:
+  rewrite: "/admin/sign-in"
+  method: [post, get]
+  actual: "Admin:signIn"
+  
+admin.signOut:
+  rewrite: "/admin/sign-out"
+  method: "get"
+  actual: "Admin:signOut"
+  
+admin.changePassword:
+  rewrite: "/admin/password"
+  method: [post, get]
+  actual: "Admin:changePassword"
+  
 ...

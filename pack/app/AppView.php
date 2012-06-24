@@ -2,6 +2,7 @@
 pload('packfire.view.pView');
 pload('AppTemplate');
 pload('AppTheme');
+pload('view.MenuView');
 
 /**
  * AppView class

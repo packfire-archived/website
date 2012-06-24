@@ -11,7 +11,7 @@
 
 app:
   rootUrl: "http://localhost/packfire-web"
-  debug: false
+  debug: true
   
 database:
   default: 
@@ -20,5 +20,8 @@ database:
     dbname: pfweb
     user: root 
     password: password
+
+routing:
+  caching: false
 
 ...

@@ -1,6 +1,5 @@
 <?php
 pload('app.AppView');
-pload('view.MenuView');
 
 /**
  * HomeIndexView class
@@ -9,8 +8,8 @@ pload('view.MenuView');
  *
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package candice.view.home
- * @since 1.0-sofia
+ * @package app.view
+ * @since 1.0
  */
 class HomeIndexView extends AppView {
     

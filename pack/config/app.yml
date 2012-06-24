@@ -15,11 +15,12 @@ app:
   debug: false
 
 security:
-  disabled: true
+  disabled: false
   override: false
   identity: null
   
 session:
+  enabled: true
   name: packfire
   lifetime: 3600
   http: true

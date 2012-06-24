@@ -1,6 +1,5 @@
 <?php
 pload('app.AppView');
-pload('view.MenuView');
 
 /**
  * HomeScreencastsView class

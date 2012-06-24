@@ -180,3 +180,7 @@ footer > div{
 #player-giants-close:active{
     padding: 11px 10px 9px;
 }
+
+.well label{
+    color:#333;
+}

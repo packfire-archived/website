@@ -47,7 +47,7 @@
                             (function($){
                                 $.getJSON('http://gdata.youtube.com/feeds/api/videos/' + video + '?v=2&alt=json', function(data){
                                     $("#screencast-" + id + " .thumb").css({
-                                        backgroundImage: "url('" + data["entry"]["media$group"]["media$thumbnail"][1]['url'] + "')"
+                                        backgroundImage: "url('" + data["entry"]["media$group"]["media$thumbnail"][1]["url"] + "')"
                                     }).click(function(){
                                         $("#player-giants .player").html('<iframe width="940" height="529" src="http://www.youtube-nocookie.com/embed/' + video + '?rel=0" frameborder="0"></iframe>');
                                         $("#player-giants").slideDown();
@@ -60,24 +60,27 @@
                     </script>
                 </div>
                 {{! 
-                    this is a Mustache comment
+                    this is a Mustache comment!
                     in the following mustache codes, you can tell
                     the template to show a message when there are no
                     screencasts available.
-                }}{{^screencasts}}
+                }}
+                {{^screencasts}}
                 <div class="span12 content-box spaced-content">
                     <div>
                         <p><i class="icon-hand-right icon-white"></i> No screencasts currently available. It'd be great if you can check back here later.</p>
                     </div>
                 </div>
-                {{/screencasts}}{{#screencasts}}<div class="span4 content-box">
+                {{/screencasts}}
+                {{!
+                    Progressing Enhancement Strategy. 
+                    if JavaScript fails to run, we can let the user click on the video
+                    to go YouTube and watch it there
+                }}
+                {{#screencasts}}
+                <div class="span4 content-box">
                     <div class="screencast-box" id="screencast-{{id}}">
                         <h5>{{title}}</h5>
-                        {{!
-                            this is progressing enhancement strategy. 
-                            if JavaScript fails to run, we can let the user click on the video
-                            to go YouTube and watch it there
-                        }}
                         <a class="thumb" href="http://youtu.be/{{videoId}}" target="_blank">
                             <i class="icon-play icon-white"></i>
                         </a>
@@ -85,7 +88,8 @@
                     <script type="text/javascript">
                         loadVideo('{{id}}', '{{videoId}}');
                     </script>
-                </div>{{/screencasts}}
+                </div>
+                {{/screencasts}}
             </div>
             <footer>
                 <div class="row">

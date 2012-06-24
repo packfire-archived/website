@@ -20,7 +20,11 @@ class AppSecurityModule extends pSecurityModule {
     }
 
     public function authorize($route) {
-        return parent::authorize($route);
+        if(substr($route->name(), 0, 6) == 'admin.'){
+            return $this->identity() != null;
+        }else{
+            return parent::authorize($route);
+        }
     }
 
     public function deauthenticate() {

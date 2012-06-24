@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Manage Website | Packfire Framework for PHP</title>
+        <base href="{{rootUrl}}" target="_top" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="assets/styles/global.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div id="navMain" class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="{{rootUrl}}">
+                            <img src="assets/images/packfire.smalllogo.dark.png" />
+                        </a>
+                        {{&menu}}
+                    </div>
+                </div>
+            </div>
+            <div id="pnlMini" class="row">
+                <div id="pnlIntro" class="span8">
+                    <div>
+                        <h1>Admin Panel</h1>
+                        <p>Good {{timeOfTheDay}}, {{username}}.</p>
+                    </div>
+                </div>
+                <div id="pnlDownload" class="span4">
+                    <div>
+                        <p>Done already?</p>
+                        <a href="{{rootUrl}}admin/sign-out" target="_blank" class="btn btn-small btn-primary"><i class="icon-flag icon-white"></i> Sign Out</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span4">
+                    <div class="well">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="admin">New Post</a></li>
+                            <li><a href="admin/password">Change Password</a></li>
+                            <li><a href="admin/users">Manage Users</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span8">
+                    <div class="content-box spaced-content">
+                        <form action="" method="post" class="">
+                            {{#failMessage}}
+                                <div class="alert alert-error">
+                                    {{failMessage}}
+                                </div>
+                            {{/failMessage}}
+                            <div class="control-group">
+                                <label class="control-label" for="txtTitle">Title</label>
+                                <div class="controls">
+                                    <input type="text" class="input-xlarge" id="txtTitle" name="title">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="ddlType">Type</label>
+                                <div class="controls">
+                                    <select id="ddlType" name="contentType">
+                                        <option>-- select one --</option>
+                                        {{#contentTypes}}
+                                            <option value="{{ContentTypeId}}">{{ContentType}}</option>
+                                        {{/contentTypes}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtContent">Content</label>
+                                <div class="controls">
+                                    <textarea name="content" id="txtContent" class="input-xlarge">
+
+                                    </textarea>
+                                </div>
+                            </div>
+                            <input type="submit" value="Create" class="btn btn-primary btn-large" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="row">
+                    <div class="span12">
+                        <div>
+                        <p>&copy; Copyright 2012 <a href="http://twitter.com/_mauris" target="_blank">Sam-Mauris Yong</a>, All Rights Reserved. This website's source code is <a href="http://github.com/packfire/website" target="_blank">hosted on Github</a>.</p>
+                        <p>Packfire Framework and this website are both released open source under the New BSD License.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript" src="assets/scripts/jquery.js"></script>
+        <script type="text/javascript" src="assets/scripts/bootstrap.js"></script>
+    </body>
+</html>

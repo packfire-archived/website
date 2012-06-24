@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Manage Website | Packfire Framework for PHP</title>
+        <base href="{{rootUrl}}" target="_top" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="assets/styles/global.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div id="navMain" class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="{{rootUrl}}">
+                            <img src="assets/images/packfire.smalllogo.dark.png" />
+                        </a>
+                        {{&menu}}
+                    </div>
+                </div>
+            </div>
+            <div id="pnlMini" class="row">
+                <div id="pnlIntro" class="span8">
+                    <div>
+                        <h1>Admin Panel</h1>
+                        <p>For administering the website.</p>
+                    </div>
+                </div>
+                <div id="pnlDownload" class="span4">
+                    <div>
+                        <p>If you have reached this place accidentally,</p>
+                        <a href="{{rootUrl}}" target="_blank" class="btn btn-small btn-primary"><i class="icon-flag icon-white"></i> Return to Packfire</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <div class="content-box spaced-content" style="padding-left:200px;">
+                        <form action="" method="post" class="">
+                            {{#failMessage}}
+                                <div class="alert alert-error">
+                                    {{failMessage}}
+                                </div>
+                            {{/failMessage}}
+                            <div class="control-group">
+                                <label class="control-label" for="txtUsername">Username</label>
+                                <div class="controls">
+                                    <input type="text" class="input-xlarge" id="txtUsername" name="username">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="txtPassword">Password</label>
+                                <div class="controls">
+                                    <input type="password" class="input-xlarge" id="txtPassword" name="password">
+                                </div>
+                            </div>
+                            <input type="submit" value="Sign In" class="btn btn-success btn-large" /> <a href="{{rootUrl}}" class="btn btn-large">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="row">
+                    <div class="span12">
+                        <div>
+                        <p>&copy; Copyright 2012 <a href="http://twitter.com/_mauris" target="_blank">Sam-Mauris Yong</a>, All Rights Reserved. This website's source code is <a href="http://github.com/packfire/website" target="_blank">hosted on Github</a>.</p>
+                        <p>Packfire Framework and this website are both released open source under the New BSD License.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript" src="assets/scripts/jquery.js"></script>
+        <script type="text/javascript" src="assets/scripts/bootstrap.js"></script>
+    </body>
+</html>

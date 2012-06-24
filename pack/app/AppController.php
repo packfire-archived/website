@@ -1,6 +1,7 @@
 <?php
 pload('packfire.controller.pController');
 pload('packfire.exception.pMissingDependencyException');
+pload('packfire.text.pInflector');
 
 /**
  * AppController class
@@ -19,14 +20,15 @@ abstract class AppController extends pController {
         if(func_num_args() == 0){
             $dbt = debug_backtrace();
             $func = $dbt[1]['function'];
-            if(substr($func, 0, 2) == 'do'){
-                $func = substr($func, 2);
+            $firstUpper = pInflector::firstUpperCase($func);
+            if($firstUpper !== false){
+                $func = substr($func, $firstUpper);
             }
             $name = get_class($this);
             if(substr($name, -10) == 'Controller'){
                 $name = substr($name, 0, strlen($name) - 10);
             }
-            $class = $name . ucfirst($func) . 'View';
+            $class = $name . $func . 'View';
             try{
                 pload('view.' . strtolower($name) . '.' . $class);
             }catch(pMissingDependencyException $ex){
