@@ -1,6 +1,7 @@
 <?php
 pload('app.AppController');
 pload('model.User');
+pload('packfire.database.pDbExpression');
 
 /**
  * AdminController Controller
@@ -33,10 +34,50 @@ class AdminController extends AppController {
             })
             ->fetch();
             
+        if($this->service('messenger')->check('postFail')){
+            $this->state['fail'] = $this->service('messenger')->read('postFail');
+        }
+        if($this->service('messenger')->check('postSuccess')){
+            $this->state['success'] = $this->service('messenger')->read('postSuccess');
+        }
+            
         $this->render();
     }
     
     public function postIndex(){
+        $title = $this->params->get('title');
+        $contentType = $this->params->get('contentType');
+        $content = $this->params->get('content');
+        
+        if($title && $contentType && $content){
+            $identity = $this->service('security')->identity();
+            try{
+                $this->service('database')->table('contents')->insert(array(
+                    'Author' => $identity['userId'],
+                    'Title' => $title,
+                    'Content' => $content,
+                    'ContentType' => $contentType,
+                    'Created' => new pDbExpression('NOW()')
+                ));
+                $this->service('messenger')->send(
+                        'psotSuccess',
+                        __CLASS__ . ':getIndex',
+                        'Content created successfully!'
+                    );
+            }catch(Exception $ex){
+                $this->service('messenger')->send(
+                        'postFail',
+                        __CLASS__ . ':getIndex',
+                        $ex->getMessage()
+                    );
+            }
+        }else{
+            $this->service('messenger')->send(
+                    'postFail',
+                    __CLASS__ . ':getIndex',
+                    'Fields cannot be empty.'
+                );
+        }
         
     }
     

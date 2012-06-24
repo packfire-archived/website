@@ -40,6 +40,7 @@
                         <ul class="nav nav-pills nav-stacked">
                             <li><a href="admin">Create Content</a></li>
                             <li><a href="admin/password">Change Password</a></li>
+                            <li><a href="admin/posts">Manage Posts</a></li>
                             <li><a href="admin/users">Manage Users</a></li>
                         </ul>
                     </div>
@@ -48,6 +49,11 @@
                     <div class="content-box" style="padding:20px;">
                         <h3>Create Content</h3>
                         <form action="" method="post" class="">
+                            {{#successMessage}}
+                                <div class="alert alert-error">
+                                    {{successMessage}}
+                                </div>
+                            {{/successMessage}}
                             {{#failMessage}}
                                 <div class="alert alert-error">
                                     {{failMessage}}
@@ -73,9 +79,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="txtContent">Content</label>
                                 <div class="controls">
-                                    <textarea name="content" id="txtContent" class="span6">
-
-                                    </textarea>
+                                    <textarea name="content" id="txtContent" class="span6" style="height:300px;"></textarea>
                                 </div>
                             </div>
                             <input type="submit" value="Create" class="btn btn-primary btn-large" />

@@ -29,6 +29,9 @@ class AdminIndexView extends AppView {
         if($this->state->get('fail')){
             $this->define('failMessage', $this->state->get('fail'));
         }
+        if($this->state->get('success')){
+            $this->define('successMessage', $this->state->get('success'));
+        }
     }
     
 }

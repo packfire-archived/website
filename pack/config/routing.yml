@@ -26,7 +26,7 @@ screencasts:
   
 admin.home:
   rewrite: "/admin"
-  method: "get"
+  method: [post, get]
   actual: "Admin"
   
 adminSignIn:
@@ -43,5 +43,15 @@ admin.changePassword:
   rewrite: "/admin/password"
   method: [post, get]
   actual: "Admin:changePassword"
+  
+admin.manageUsers:
+  rewrite: "/admin/users"
+  method: [post, get]
+  actual: "Admin:manageUsers"
+  
+admin.managePosts:
+  rewrite: "/admin/posts"
+  method: [post, get]
+  actual: "Admin:managePosts"
   
 ...
