@@ -14,7 +14,7 @@ pload('app.AppController');
  */
 class HomeController extends AppController {
     
-    function doIndex(){
+    public function doIndex(){
         $this->state['features'] = array(
             array(
                 'title' => 'Truly Object-Oriented',
@@ -44,7 +44,20 @@ class HomeController extends AppController {
         $this->render();
     }
     
-    function doGetStarted(){
+    public function doScreencasts(){
+        $screencasts = $this->service('database')->from('contents')
+                ->where('ContentType = 1')->select('Title', 'Content')
+                ->map(function($x){
+                    return array(
+                            'title' => $x[0],
+                            'videoId' => $x[1]
+                        );
+                })->fetch();
+        if($screencasts->count() > 0){
+            $this->state = $screencasts;
+        }else{
+            $this->state = false;
+        }
         $this->render();
     }
     

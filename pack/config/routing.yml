@@ -17,6 +17,11 @@ home:
 getStarted:
   rewrite: "/get-started"
   method: "get"
-  actual: "Home:getStarted"
+  actual: "view.home.HomeGetStartedView"
+  
+screencasts:
+  rewrite: "/screencasts"
+  method: "get"
+  actual: "Home:screencasts"
   
 ...

@@ -13,4 +13,12 @@ app:
   rootUrl: "http://localhost/packfire-web"
   debug: true
   
+database:
+  default: 
+    driver: mysql
+    host: localhost
+    dbname: pfweb
+    user: root 
+    password: password
+
 ...

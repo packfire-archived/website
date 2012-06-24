@@ -23,8 +23,8 @@
             <div id="pnlMini" class="row">
                 <div id="pnlIntro" class="span8">
                     <div>
-                        <h1>Get Started</h1>
-                        <p>It's easy to get Packfire working right away.</p>
+                        <h1>Screencasts</h1>
+                        <p>Video guides and tutorials to help you learn development in Packfire.</p>
                     </div>
                 </div>
                 <div id="pnlDownload" class="span4">
@@ -34,13 +34,23 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="span12">
-                    <div class=" content-box spaced-content">
-                        <p>Currently our Get Started Guide is hosted on Github. </p>
-                        <a href="https://github.com/packfire/books/blob/master/starter-guide.md" class="btn btn-large btn-success">Get Started <i class="icon-play icon-white"></i></a>
+            <div class="row">{{! 
+                    this is a Mustache comment
+                    in the following mustache codes, you can tell
+                    the template to show a message when there are no
+                    screencasts available.
+                }}{{^screencasts}}
+                <div class="span12 content-box spaced-content">
+                    <div>
+                        <p><i class="icon-hand-right icon-white"></i> No screencasts currently available. It'd be great if you can check back here later.</p>
                     </div>
                 </div>
+                {{/screencasts}}{{#screencasts}}<div class="span6 content-box">
+                    <div>
+                        <h3>{{title}}</h3>
+                        <iframe width="440" height="248" src="http://www.youtube-nocookie.com/embed/{{videoId}}?rel=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>{{/screencasts}}
             </div>
             <footer>
                 <div class="row">

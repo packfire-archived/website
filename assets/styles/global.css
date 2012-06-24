@@ -22,6 +22,10 @@ p{
     font: normal 13px/1.8 'Lucida Grande', 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6, p{
+    margin: 0 0 10px;
+}
+
 .navbar .brand{
     color:#FFF;
 }
