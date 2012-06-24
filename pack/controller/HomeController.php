@@ -9,8 +9,8 @@ pload('app.AppController');
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package candice.controller
- * @since 1.0-sofia
+ * @package app.controller
+ * @since 1.0
  */
 class HomeController extends AppController {
     
@@ -46,11 +46,12 @@ class HomeController extends AppController {
     
     public function doScreencasts(){
         $screencasts = $this->service('database')->from('contents')
-                ->where('ContentType = 1')->select('Title', 'Content')
+                ->where('ContentType = 1')->select('ContentId', 'Title', 'Content')
                 ->map(function($x){
                     return array(
-                            'title' => $x[0],
-                            'videoId' => $x[1]
+                            'id' => $x[0],
+                            'title' => $x[1],
+                            'videoId' => $x[2]
                         );
                 })->fetch();
         if($screencasts->count() > 0){

@@ -140,3 +140,43 @@ footer > div{
 #ddmSocial li{
     padding:5px;
 }
+
+.screencast-box .thumb{
+    width:280px;
+    height:180px;
+    cursor:pointer;
+    display:block;
+    background-position: top center;
+}
+
+.screencast-box .thumb i{
+    margin: 85px 135px;
+}
+
+#player-giants{
+    display:none;
+    margin: 0 0 20px;
+}
+
+#player-giants .player{
+    background: rgba(0,0,0, 0.5);
+}
+
+#player-giants-close, #player-giants-close:visited{
+    color: #FFF;
+    cursor:pointer;
+    display:block;
+    text-align:center;
+    padding: 10px;
+    text-decoration:none;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+#player-giants-close:hover{
+    color:#EFEFEF;
+    padding: 9px 10px 11px;
+}
+
+#player-giants-close:active{
+    padding: 11px 10px 9px;
+}
