@@ -38,14 +38,15 @@
                 <div class="span4">
                     <div class="well">
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="admin">New Post</a></li>
+                            <li><a href="admin">Create Content</a></li>
                             <li><a href="admin/password">Change Password</a></li>
                             <li><a href="admin/users">Manage Users</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="span8">
-                    <div class="content-box spaced-content">
+                    <div class="content-box" style="padding:20px;">
+                        <h3>Create Content</h3>
                         <form action="" method="post" class="">
                             {{#failMessage}}
                                 <div class="alert alert-error">
@@ -55,13 +56,13 @@
                             <div class="control-group">
                                 <label class="control-label" for="txtTitle">Title</label>
                                 <div class="controls">
-                                    <input type="text" class="input-xlarge" id="txtTitle" name="title">
+                                    <input type="text" class="span6" id="txtTitle" name="title">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="ddlType">Type</label>
                                 <div class="controls">
-                                    <select id="ddlType" name="contentType">
+                                    <select id="ddlType" class="span6" name="contentType">
                                         <option>-- select one --</option>
                                         {{#contentTypes}}
                                             <option value="{{ContentTypeId}}">{{ContentType}}</option>
@@ -72,7 +73,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="txtContent">Content</label>
                                 <div class="controls">
-                                    <textarea name="content" id="txtContent" class="input-xlarge">
+                                    <textarea name="content" id="txtContent" class="span6">
 
                                     </textarea>
                                 </div>

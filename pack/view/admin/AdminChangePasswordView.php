@@ -13,7 +13,25 @@ pload('app.AppView');
 class AdminChangePasswordView extends AppView {
     
     protected function create(){
+        $menu = new MenuView();
+        $menu->copyBucket($this);
+        $this->define('menu', $menu);
         
+        $rootUrl = $this->route('home');
+        $this->define('rootUrl', $rootUrl);
+        
+        $identity = $this->service('security')->identity();
+        $this->define('username', $identity['name']);
+        $this->define('timeOfTheDay', $this->state->get('timeOfDay'));
+        
+        $this->define('contentTypes', $this->state->get('types'));
+        
+        if($this->state->get('fail')){
+            $this->define('failMessage', $this->state->get('fail'));
+        }
+        if($this->state->get('success')){
+            $this->define('successMessage', $this->state->get('success'));
+        }
     }
     
 }

@@ -1,5 +1,6 @@
 <?php
 pload('app.AppController');
+pload('model.User');
 
 /**
  * AdminController Controller
@@ -19,6 +20,9 @@ class AdminController extends AppController {
     }
     
     public function getIndex(){
+        $identity = $this->service('security')->identity();
+        $this->state['timeOfDay'] = $this->renderTimeOfDay($identity);
+        
         $this->state['types'] = $this->service('database')->from('contenttypes')
             ->select('ContentTypeId', 'ContentType')
             ->map(function($x){
@@ -40,11 +44,10 @@ class AdminController extends AppController {
         if($this->service('security')->identity()){
             $this->redirect($this->route('admin.home'));
         }else{
-            if($this->service('messenger')->check('loginFail', __CLASS__ . ':signIn')){
-                $this->state['fail'] = $this->service('messenger')->read('loginFail', __CLASS__ . ':signIn');
+            if($this->service('messenger')->check('loginFail')){
+                $this->state['fail'] = $this->service('messenger')->read('loginFail');
             }
-            pload('view.admin.AdminSignInView');
-            $this->render(new AdminSignInView());
+            $this->render();
         }
     }
     
@@ -59,33 +62,34 @@ class AdminController extends AppController {
                         ->where('Username = :username AND Password = :password')
                         ->param('username', $username)
                         ->param('password', hash('sha256', $password))
-                        ->select('UserId', 'Username', 'Name', 'Timezone')
-                        ->map(function($x){
-                            return array(
-                                'UserId' => $x[0],
-                                'Username' => $x[1],
-                                'Name' => $x[2],
-                                'Timezone' => $x[3]
-                            );
-                        })
+                        ->model($this->model('User'))
                         ->limit(0, 1)
                         ->fetch();
                 if($users->count() > 0){
-                    $user = $users[0];
+                    $user = (array)$users[0];
                     $this->service('security')->identity($user);
                     $this->redirect($this->route('admin.home'));
                     return;
                 }else{
-                    $this->service('messenger')
-                        ->send('loginFail', __CLASS__ . ':signIn', self::INVALID_LOGIN);
+                    $this->service('messenger')->send(
+                            'loginFail',
+                            __CLASS__ . ':getSignIn',
+                            self::INVALID_LOGIN
+                        );
                 }
             }catch(Exception $ex){
-                $this->service('messenger')
-                    ->send('loginFail', __CLASS__ . ':signIn', $ex->getMessage());
+                $this->service('messenger')->send(
+                        'loginFail',
+                        __CLASS__ . ':getSignIn',
+                        $ex->getMessage()
+                    );
             }
         }else{
-            $this->service('messenger')
-                ->send('loginFail', __CLASS__ . ':signIn', self::INVALID_LOGIN);
+            $this->service('messenger')->send(
+                    'loginFail',
+                    __CLASS__ . ':getSignIn',
+                    self::INVALID_LOGIN
+                );
         }
         $this->redirect($this->route('adminSignIn'));
     }
@@ -96,21 +100,77 @@ class AdminController extends AppController {
     }
     
     public function getChangePassword(){
-        $this->state['types'] = $this->service('database')->from('contenttypes')
-            ->select('ContentTypeId', 'ContentType')
-            ->map(function($x){
-                return array(
-                    'ContentTypeId' => $x[0],
-                    'ContentType' => $x[1]
-                );
-            })
-            ->fetch();
+        $identity = $this->service('security')->identity();
+        $this->state['timeOfDay'] = $this->renderTimeOfDay($identity);
+        
+        if($this->service('messenger')->check('changeFail')){
+            $this->state['fail'] = $this->service('messenger')->read('changeFail');
+        }
+        if($this->service('messenger')->check('changeSuccess')){
+            $this->state['success'] = $this->service('messenger')->read('changeSuccess');
+        }
             
         $this->render();
     }
     
     public function postChangePassword(){
         
+        $oldPassword = $this->params->get('oldpassword');
+        $newPassword = $this->params->get('newpassword');
+        $confirmPassword = $this->params->get('confirmpassword');
+        
+        if($newPassword && $newPassword == $confirmPassword){
+            $identity = $this->service('security')->identity();
+            // check if the old password is correct
+            $user = $this->service('database')->from('users')
+                    ->where('UserId = :userId AND Password = :password')
+                    ->param('userId', $identity['userId'])
+                    ->param('password', hash('sha256', $oldPassword))
+                    ->model($this->model('User'))
+                    ->limit(0, 1)
+                    ->fetch()->get(0);
+            if($user){
+                // now update the password since the old password is correct
+                $this->service('database')->table('users')
+                        ->update(array(
+                            'UserId' => $user->userId,
+                            'Password' => hash('sha256', $newPassword)
+                            ));
+                $this->service('messenger')->send(
+                        'changeSuccess',
+                        __CLASS__ . ':getChangePassword',
+                        'Password changed successfully.'
+                    );
+            }else{
+                $this->service('messenger')->send(
+                        'changeFail',
+                        __CLASS__ . ':getChangePassword',
+                        'Your old password is invalid.'
+                    );
+            }
+        }else{
+            $this->service('messenger')->send(
+                    'changeFail',
+                    __CLASS__ . ':getChangePassword',
+                    'Your new password is empty or it does not match with the confirmation password.'
+                );
+        }
+        $this->redirect($this->route('admin.changePassword'));
+    }
+    
+    private function renderTimeOfDay($user){
+        $now = pDateTime::now();
+        $now->timezone($user['timezone']); // convert to user's timezone
+        $hour = $now->time()->hour();
+        $result = 'night';
+        if($hour > 3 && $hour < 12){
+            $result = 'morning';
+        }elseif($hour < 17){
+            $result = 'afternoon';
+        }elseif($hour < 22){
+            $result = 'evening';
+        }
+        return $result;
     }
     
 }

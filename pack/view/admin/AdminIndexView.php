@@ -21,29 +21,14 @@ class AdminIndexView extends AppView {
         $this->define('rootUrl', $rootUrl);
         
         $identity = $this->service('security')->identity();
-        $this->define('username', $identity['Name']);
-        $this->define('timeOfTheDay', $this->renderTimeOfDay($identity));
+        $this->define('username', $identity['name']);
+        $this->define('timeOfTheDay', $this->state->get('timeOfDay'));
         
         $this->define('contentTypes', $this->state->get('types'));
         
         if($this->state->get('fail')){
             $this->define('failMessage', $this->state->get('fail'));
         }
-    }
-    
-    private function renderTimeOfDay($user){
-        $now = pDateTime::now();
-        $now->timezone($user['Timezone']); // convert to user's timezone
-        $hour = $now->time()->hour();
-        $result = 'night';
-        if($hour > 3 && $hour < 12){
-            $result = 'morning';
-        }elseif($hour < 17){
-            $result = 'afternoon';
-        }elseif($hour < 22){
-            $result = 'evening';
-        }
-        return $result;
     }
     
 }
