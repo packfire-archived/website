@@ -38,7 +38,7 @@ cache:
   
 # this sets the debugger output method
 debugger.output:
-  class: packfire.debugger.pConsoleDebugOutput
+  class: packfire.debugger.console.pConsoleDebugOutput
   
 router:
   class: packfire.routing.pRouter

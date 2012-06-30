@@ -24,6 +24,18 @@ screencasts:
   method: "get"
   actual: "Home:screencasts"
   
+downloads:
+  rewrite: "/downloads"
+  method: [get, post]
+  actual: "Home:downloads"
+  
+downloadFile:
+  rewrite: "/download/{id}"
+  method: "get"
+  actual: "Home:downloadFile"
+  params:
+    id: '[0-9]+'
+  
 admin.home:
   rewrite: "/admin"
   method: [post, get]

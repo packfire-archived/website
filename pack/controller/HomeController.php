@@ -44,9 +44,58 @@ class HomeController extends AppController {
         $this->render();
     }
     
+    public function doDownloadFile(){
+        $screencasts = $this->service('database')->from('contents')
+                ->where('ContentId = :contentId')->select('ContentId', 'Title', 'Content', 'Created')
+                ->orderByDesc('Created')
+                ->param('contentId', $this->params->get('id'))
+                ->map(function($x){
+                    return array(
+                            'id' => $x[0],
+                            'title' => $x[1],
+                            'url' => $x[2],
+                            'filename' => pPath::baseName($x[2]),
+                            'date' => pDateTime::fromString($x[3])->format('h:i:sa, j M Y')
+                        );
+                })->fetch();
+        if($screencasts->count() > 0){
+            $this->state = $screencasts[0];
+        }else{
+            $this->state = false;
+        }
+        $this->render();
+    }
+    
+    public function postDownloads(){
+        $download = $this->params->get('download');
+        $this->redirect($this->route('downloadFile', array('id' => $download)));
+    }
+    
+    public function doDownloads(){
+        $screencasts = $this->service('database')->from('contents')
+                ->where('ContentType = 2')->select('ContentId', 'Title', 'Content', 'Created')
+                ->orderByDesc('Created')
+                ->map(function($x){
+                    return array(
+                            'id' => $x[0],
+                            'title' => $x[1],
+                            'url' => $x[2],
+                            'filename' => pPath::baseName($x[2]),
+                            'date' => pDateTime::fromString($x[3])->format('h:i:sa, j M Y')
+                        );
+                })->fetch();
+        if($screencasts->count() > 0){
+            $this->state = $screencasts;
+        }else{
+            $this->state = false;
+        }
+        $this->render();
+    }
+    
     public function doScreencasts(){
         $screencasts = $this->service('database')->from('contents')
                 ->where('ContentType = 1')->select('ContentId', 'Title', 'Content')
+                ->orderByDesc('Created')
                 ->map(function($x){
                     return array(
                             'id' => $x[0],

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Manage Website | Packfire Framework for PHP</title>
+        <title>Packfire Framework for PHP - Downloading ...</title>
         <base href="{{rootUrl}}" target="_top" />
         <link rel="shortcut icon" href="favicon.ico" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,43 +23,35 @@
             <div id="pnlMini" class="row">
                 <div id="pnlIntro" class="span8">
                     <div>
-                        <h1>Admin Panel</h1>
-                        <p>For administering the website.</p>
+                        <h1>Downloads</h1>
+                        <p>Grab a copy, it's free anyway.</p>
                     </div>
                 </div>
                 <div id="pnlDownload" class="span4">
                     <div>
-                        <p>If you have reached this place accidentally,</p>
-                        <a href="{{rootUrl}}" class="btn btn-small btn-inverse"><i class="icon-flag icon-white"></i> Return to Packfire</a>
+                        <p>Let the code work for you.</p>
+                        <a href="downloads" target="_blank" class="btn btn-small btn-inverse"><i class="icon-download icon-white"></i> Downloads</a>
+                        <a href="http://github.com/packfire" target="_blank" class="btn btn-small"><i class="icon-flag"></i> View on Github</a>
                     </div>
                 </div>
             </div>
+            {{#file}}
             <div class="row">
                 <div class="span12">
-                    <div class="content-box spaced-content" style="padding-left:200px;">
-                        <form action="" method="post" class="">
-                            {{#failMessage}}
-                                <div class="alert alert-error">
-                                    {{failMessage}}
-                                </div>
-                            {{/failMessage}}
-                            <div class="control-group">
-                                <label class="control-label" for="txtUsername">Username</label>
-                                <div class="controls">
-                                    <input type="text" class="input-xlarge" id="txtUsername" name="username">
-                                </div>
+                    <div class="content-box spaced-content">
+                        <div>
+                            <h2>Downloading...</h2>
+                            <div class="progress progress-striped active">
+                                <div class="bar" style="width: 100%;"></div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label" for="txtPassword">Password</label>
-                                <div class="controls">
-                                    <input type="password" class="input-xlarge" id="txtPassword" name="password">
-                                </div>
-                            </div>
-                            <input type="submit" value="Sign In" class="btn btn-success btn-large" /> <a href="{{rootUrl}}" class="btn btn-large">Cancel</a>
-                        </form>
+                            <p>Your download request for {{filename}} has started. </p>
+                            <a href="downloads" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i> Back to Downloads</a>
+                            <iframe id="downloadHelper" src="{{url}}" style="height:0;width:0;display:none;"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
+            {{/file}}
             <footer>
                 <div class="row">
                     <div class="span12">

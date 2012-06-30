@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Packfire Framework for PHP - Downloads</title>
+        <base href="{{rootUrl}}" target="_top" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="assets/styles/global.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div id="navMain" class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="{{rootUrl}}">
+                            <img src="assets/images/packfire.smalllogo.dark.png" />
+                        </a>
+                        {{&menu}}
+                    </div>
+                </div>
+            </div>
+            <div id="pnlMini" class="row">
+                <div id="pnlIntro" class="span8">
+                    <div>
+                        <h1>Downloads</h1>
+                        <p>Grab a copy, it's free anyway.</p>
+                    </div>
+                </div>
+                <div id="pnlDownload" class="span4">
+                    <div>
+                        <p>Let the code work for you.</p>
+                        <a href="downloads" target="_blank" class="btn btn-small btn-inverse"><i class="icon-download icon-white"></i> Downloads</a>
+                        <a href="http://github.com/packfire" target="_blank" class="btn btn-small"><i class="icon-flag"></i> View on Github</a>
+                    </div>
+                </div>
+            </div>
+            {{^downloads}}
+            <div class="row">
+                <div class="span12">
+                    <div class="content-box spaced-content">
+                        <p><i class="icon-hand-right icon-white"></i> No downloads currently available. It'd be great if you can check back here later.</p>
+                    </div>
+                </div>
+            </div>
+            {{/downloads}}
+            {{#showForm}}
+            <div class="row">
+                <div class="span4 content-box" style="background-image:url('https://en.gravatar.com/userimage/3462019/759b789022ffba4143e276692ccc1dc5.png?size=120'); background-position:200px -20px;background-repeat: no-repeat;">
+                    <div style="margin-top:60px;">
+                        <h3>About Preview</h3>
+                        <p>
+                            Packfire Framework 1.0-sofia is a preview version of the framework. There may be features which are not fully implemented, unstable, or not suitable for certain versions of PHP. 
+                        </p>
+                    </div>
+                </div>
+                <div class="span8">
+                    <div class="well">
+                        <h2>Preview is here.</h2>
+                        <p>1.0-sofia is a great start for you to take a peek into the power and clarity of Packfire Framework. You can use the preview to work on small projects that demands rapid development or prototyping.</p>
+                        <form action="" method="post" class="form-inline" style="margin: 40px 0;">
+                            <select name="download" class="span5">
+                                {{#downloads}}
+                                    <option value="{{id}}">{{title}}</option>
+                                {{/downloads}}
+                            </select>
+                            <button class="btn btn-warning" type="submit"><i class="icon-download icon-white"></i> Download</button>
+                        </form>
+                        <div style="margin:20px 0;">
+                            <h3>Git Access</h3>
+                            <p>
+                                You can fetch the framework running the following git command:
+                            </p>
+                            <p><code>
+                                $ git clone --recursive https://github.com/packfire/framework.git packfire
+                            </code><p>
+                        </div>
+                        <div style="margin:20px 0;">
+                            <h3>Go pro over Packfire</h3>
+                            <p>
+                                Have some spare time? Collaborate Packfire by forking it over at Github or get your project started by reading the Get Started guide.
+                            </p>
+                            <a href="http://github.com/packfire" class="btn btn-success" target="_blank">Fork Packfire</a> <a href="get-started" class="btn btn-inverse">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/showForm}}
+            <footer>
+                <div class="row">
+                    <div class="span12">
+                        <div>
+                        <p>&copy; Copyright 2012 <a href="http://twitter.com/_mauris" target="_blank">Sam-Mauris Yong</a>, All Rights Reserved. This website's source code is <a href="http://github.com/packfire/website" target="_blank">hosted on Github</a>.</p>
+                        <p>Packfire Framework and this website are both released open source under the New BSD License.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript" src="assets/scripts/jquery.js"></script>
+        <script type="text/javascript" src="assets/scripts/bootstrap.js"></script>
+    </body>
+</html>
