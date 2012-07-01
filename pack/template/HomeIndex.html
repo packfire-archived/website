@@ -36,13 +36,40 @@
                         <a href="http://github.com/packfire" target="_blank" class="btn btn-large btn-primary"><i class="icon-flag icon-white"></i> View on Github</a></div>
                     </div>
                 </div>
+                <div class="span12">
+                    <div id="home-social-bar">
+                    <ul>
+                        <li>
+                            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=packfire&amp;repo=framework&amp;type=watch&amp;count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" height="20" width="80"></iframe>
+                        </li>
+                        <li>
+                            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=packfire&amp;repo=framework&amp;type=fork&amp;count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" height="20" width="80"></iframe>
+                        </li>
+                        <li>
+                            <div class="fb-like" data-href="http://facebook.com/packfire" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false" data-colorscheme="light" data-font="lucida grande"></div>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/packfire" class="twitter-follow-button" data-show-count="false" data-size="small" data-dnt="true">Follow @packfire</a>
+                        </li>
+                        <li>
+                            <a href="http://www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url('http://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;">Share on Tumblr</a>
+                        </li>
+                        <li>
+                            <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="120" data-href="https://plus.google.com/106494570352998281538/"></div>
+                        </li>
+                    </ul>
+                        
+                    </div>
+                </div>
             </div>
             <div id="pnlFeatures" class="row">
                 {{#features}}
                 <div class="span4">
                     <div>
-                        <h3>{{&title}}</h3>
-                        <p>{{&text}}</p>
+                        <h3>{{title}}</h3>
+                        <p>{{text}}</p>
                     </div>
                 </div>
                 {{/features}}
@@ -58,7 +85,38 @@
                 </div>
             </footer>
         </div>
+        
+        <script type="text/javascript">
+            (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=195404063918507";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+        <script type="text/javascript" src="http://platform.tumblr.com/v1/share.js"></script>
+        
+        
         <script type="text/javascript" src="assets/scripts/jquery.js"></script>
         <script type="text/javascript" src="assets/scripts/bootstrap.js"></script>
+        <script type="text/javascript">
+            (function($){
+                $(function(){
+                    window.setTimeout(function(){
+                        $("#pnlJumbo #pnlIntro, #pnlJumbo #pnlDownload").css('border-radius', '5px 5px 0 0');
+                        $("#home-social-bar").fadeIn(); 
+                    }, 800);
+                });
+            })(jQuery);
+        </script>
     </body>
 </html>

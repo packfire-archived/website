@@ -31,6 +31,10 @@ h1, h2, h3, h4, h5, h6, p{
     margin: 0 0 10px;
 }
 
+embed, iframe, object{
+    width: 100%;
+}
+
 .navbar .brand{
     color:#FFF;
 }
@@ -122,7 +126,6 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .row{
-    margin-top:20px;
     margin-bottom:20px;;
 }
 
@@ -192,4 +195,35 @@ footer > div{
 
 .well label{
     color:#333;
+}
+
+#home-social-bar{
+    display:none;
+    background:rgba(25,25,25,0.8);
+    border-radius:0 0 5px 5px;
+    padding: 10px 5px 5px;
+}
+
+#home-social-bar ul, #home-social-bar li{
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    list-style:none;
+}
+
+#home-social-bar li{
+    display:inline-block;
+    overflow:hidden;
+    width:140px;
+    height:20px;
+}
+
+#home-social-bar li iframe, #home-social-bar li div{
+    width:120px;
+    margin:0px auto;
+}
+
+
+#home-social-bar .fb-like{
+    height:20px;
 }
