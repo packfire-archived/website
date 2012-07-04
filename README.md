@@ -1,4 +1,6 @@
-website
-=======
+#Packfire Framework's Website
 
-The website for Packfire Framework's source code.
+
+This repository holds the Packfire application source code that powers [Packfire's website](http://mauris.sg/packfire).
+
+You may learn how to create a Packfire application by reading the source code of the working website here. 
