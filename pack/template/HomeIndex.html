@@ -6,6 +6,7 @@
         <link rel="shortcut icon" href="favicon.ico" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap-responsive.css" />
         <link rel="stylesheet" type="text/css" href="assets/styles/global.css" />
     </head>
     <body>
@@ -21,46 +22,47 @@
                 </div>
             </div>
             <div id="pnlJumbo" class="row">
-                <div id="pnlIntro" class="span8">
-                    <div>
-                        <h1>Packfire Framework for PHP</h1>
-                        <p>Be surprised at how fast you can build a web application with a pack of fire.</p>
-                    </div>
-                </div>
-                <div id="pnlDownload" class="span4">
-                    <div>
-                        <p>The OOP Framework for PHP. </p>
-                        <p>Be amazed. Start now.</p>
+                <div>
+                    <div id="pnlIntro" class="span8">
                         <div>
-                        <a href="downloads" class="btn btn-large btn-success"><i class="icon-download icon-white"></i> Download</a>
-                        <a href="http://github.com/packfire" target="_blank" class="btn btn-large btn-primary"><i class="icon-flag icon-white"></i> View on Github</a></div>
+                            <h1>Packfire Framework for PHP</h1>
+                            <p>Be surprised at how fast you can build a web application with a pack of fire.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="span12">
-                    <div id="home-social-bar">
-                    <ul>
-                        <li>
-                            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=packfire&amp;repo=framework&amp;type=watch&amp;count=true"
-  allowtransparency="true" frameborder="0" scrolling="0" height="20" width="80"></iframe>
-                        </li>
-                        <li>
-                            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=packfire&amp;repo=framework&amp;type=fork&amp;count=true"
-  allowtransparency="true" frameborder="0" scrolling="0" height="20" width="80"></iframe>
-                        </li>
-                        <li>
-                            <div class="fb-like" data-href="http://facebook.com/packfire" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false" data-colorscheme="light" data-font="lucida grande"></div>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/packfire" class="twitter-follow-button" data-show-count="false" data-size="small" data-dnt="true">Follow @packfire</a>
-                        </li>
-                        <li>
-                            <a href="http://www.tumblr.com/share" title="Share on Tumblr" style="float:left;display:block;height:20px;width:81px;background:url('http://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;"></a>
-                        </li>
-                        <li>
-                            <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="120" data-href="https://plus.google.com/106494570352998281538/"></div>
-                        </li>
-                    </ul>
-                        
+                    <div id="pnlDownload" class="span4">
+                        <div>
+                            <p>The OOP Framework for PHP. </p>
+                            <p>Be amazed. Start now.</p>
+                            <div>
+                            <a href="downloads" class="btn btn-large btn-success"><i class="icon-download icon-white"></i> Download</a>
+                            <a href="http://github.com/packfire" target="_blank" class="btn btn-large btn-primary"><i class="icon-flag icon-white"></i> View on Github</a></div>
+                        </div>
+                    </div>
+                    <div class="span12">
+                        <div id="home-social-bar">
+                        <ul>
+                            <li>
+                                <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=packfire&amp;repo=framework&amp;type=watch&amp;count=true"
+    allowtransparency="true" frameborder="0" scrolling="0" height="20" width="80"></iframe>
+                            </li>
+                            <li>
+                                <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=packfire&amp;repo=framework&amp;type=fork&amp;count=true"
+    allowtransparency="true" frameborder="0" scrolling="0" height="20" width="80"></iframe>
+                            </li>
+                            <li>
+                                <div class="fb-like" data-href="http://facebook.com/packfire" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false" data-colorscheme="light" data-font="lucida grande"></div>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/packfire" class="twitter-follow-button" data-show-count="false" data-size="small" data-dnt="true">Follow @packfire</a>
+                            </li>
+                            <li>
+                                <a href="http://www.tumblr.com/share" title="Share on Tumblr" style="float:left;display:block;height:20px;width:81px;background:url('http://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;"></a>
+                            </li>
+                            <li>
+                                <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="120" data-href="https://plus.google.com/106494570352998281538/"></div>
+                            </li>
+                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -112,7 +114,8 @@
             (function($){
                 $(function(){
                     window.setTimeout(function(){
-                        $("#pnlJumbo #pnlIntro, #pnlJumbo #pnlDownload").css('border-radius', '5px 5px 0 0');
+                        $("#pnlJumbo #pnlIntro").css('border-radius', '5px 0 0 0');
+                        $("#pnlJumbo #pnlDownload").css('border-radius', '0 5px 0 0');
                         $("#home-social-bar").fadeIn(); 
                     }, 800);
                 });

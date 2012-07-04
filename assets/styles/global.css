@@ -60,6 +60,7 @@ embed, iframe, object{
 
 #pnlJumbo, #pnlMini{
     margin-bottom:20px;
+    border-radius:5px;
 }
 
 #pnlIntro{
@@ -67,6 +68,17 @@ embed, iframe, object{
     background:rgba(255,255,255,0.8);
     border-radius: 5px 0px 0px 5px;
     color:#000;
+    padding-right:20px;
+}
+
+@media (min-width: 1200px) {
+    #pnlIntro{
+        padding-right:30px;
+    }
+}
+
+#pnlDownload a.btn{
+    margin-bottom:20px;
 }
 
 #pnlMini #pnlIntro, #pnlMini #pnlDownload{
@@ -97,6 +109,15 @@ embed, iframe, object{
     padding: 40px 20px;
 }
 
+@media (min-width: 768px) and (max-width: 1200px){
+    #pnlJumbo #pnlIntro > div{
+        padding: 40px 20px;
+    }
+    #pnlJumbo #pnlDownload > div{
+        padding: 20px;
+    }
+}
+
 #pnlIntro h1{
     font-size: 36px;
     margin-bottom:10px;
@@ -110,17 +131,18 @@ embed, iframe, object{
     background:#FFF;
     border-radius: 0px 5px 5px 0px;
     margin:0;
-    width:320px;
     color:#333;
 }
 
 #pnlFeatures > div{
     margin-bottom:20px;
+    height:180px;
 }
 
 #pnlFeatures h3{
     margin-bottom:10px;
 }
+
 #pnlFeatures > div > div, .content-box > div{
     padding:10px;
 }
@@ -153,16 +175,27 @@ footer > div{
     padding:5px;
 }
 
+.screencast-box{
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
 .screencast-box .thumb{
-    width:280px;
+    width:100%;
     height:180px;
+    background-color:#000;
     cursor:pointer;
     display:block;
     background-position: top center;
+    background-repeat:no-repeat;
+    overflow:hidden;
 }
 
 .screencast-box .thumb i{
-    margin: 85px 135px;
+    margin: 85px auto;
+    display:block;
+    width:14px;
+    height:14px;
 }
 
 #player-giants{
