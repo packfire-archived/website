@@ -10,7 +10,7 @@
 ---
 app:
   name: "Packfire Framework for PHP"
-  version: "1.0-sofia"
+  version: "1.0"
   rootUrl: "http://mauris.sg/packfire"
   debug: false
 

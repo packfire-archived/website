@@ -20,7 +20,7 @@ class AdminController extends AppController {
         $this->redirect($this->route('adminSignIn'));
     }
     
-    public function getIndex(){
+    public function index(){
         $identity = $this->service('security')->identity();
         $this->state['timeOfDay'] = $this->renderTimeOfDay($identity);
         
@@ -81,7 +81,7 @@ class AdminController extends AppController {
         $this->redirect($this->route('admin.home'));
     }
     
-    public function getSignIn(){
+    public function signIn(){
         if($this->service('security')->identity()){
             $this->redirect($this->route('admin.home'));
         }else{
@@ -135,12 +135,12 @@ class AdminController extends AppController {
         $this->redirect($this->route('adminSignIn'));
     }
     
-    public function doSignOut(){
+    public function signOut(){
         $this->service('security')->deauthenticate();
         $this->redirect($this->route('home'));
     }
     
-    public function getChangePassword(){
+    public function changePassword(){
         $identity = $this->service('security')->identity();
         $this->state['timeOfDay'] = $this->renderTimeOfDay($identity);
         

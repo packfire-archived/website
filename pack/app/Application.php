@@ -1,5 +1,5 @@
 <?php
-pload('packfire.application.pApplication');
+pload('packfire.application.http.pHttpApplication');
 
 /**
  * Application class
@@ -12,7 +12,7 @@ pload('packfire.application.pApplication');
  * @package packfire.app
  * @since 1.0-sofia
  */
-class Application extends pApplication {
+class Application extends pHttpApplication {
     
     
     

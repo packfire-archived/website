@@ -14,7 +14,7 @@ pload('app.AppController');
  */
 class HomeController extends AppController {
     
-    public function doIndex(){
+    public function index(){
         $this->state['features'] = array(
             array(
                 'title' => 'Truly Object-Oriented',
@@ -44,7 +44,7 @@ class HomeController extends AppController {
         $this->render();
     }
     
-    public function doDownloadFile(){
+    public function downloadFile(){
         $screencasts = $this->service('database')->from('contents')
                 ->where('ContentId = :contentId')->select('ContentId', 'Title', 'Content', 'Created')
                 ->orderByDesc('Created')
@@ -71,7 +71,7 @@ class HomeController extends AppController {
         $this->redirect($this->route('downloadFile', array('id' => $download)));
     }
     
-    public function doDownloads(){
+    public function downloads(){
         $screencasts = $this->service('database')->from('contents')
                 ->where('ContentType = 2')->select('ContentId', 'Title', 'Content', 'Created')
                 ->orderByDesc('Created')
@@ -92,7 +92,7 @@ class HomeController extends AppController {
         $this->render();
     }
     
-    public function doScreencasts(){
+    public function screencasts(){
         $screencasts = $this->service('database')->from('contents')
                 ->where('ContentType = 1')->select('ContentId', 'Title', 'Content')
                 ->orderByDesc('Created')
