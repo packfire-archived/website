@@ -1,0 +1,4 @@
+#!/bin/bash
+# Packfire Application's CLI access shell script for Linux
+BASEDIR=$(dirname $0)
+php $BASEDIR/torch.php $@
