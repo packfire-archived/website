@@ -13,3 +13,6 @@ abstract class AppView extends pAppView {
     
     
 }
+
+
+pload('view.MenuView');
