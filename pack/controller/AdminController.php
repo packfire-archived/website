@@ -45,9 +45,9 @@ class AdminController extends AppController {
     }
     
     public function postIndex(){
-        $title = $this->params->get('title');
-        $contentType = $this->params->get('contentType');
-        $content = $this->params->get('content');
+        $title = $this->param('title');
+        $contentType = $this->param('contentType');
+        $content = $this->param('content');
         
         if($title && $contentType && $content){
             $identity = $this->service('security')->identity();
@@ -95,8 +95,8 @@ class AdminController extends AppController {
     public function postSignIn(){
         
         // this is a post request, so you can perform sign in and identity assignment
-        $username = $this->params->get('username');
-        $password = $this->params->get('password');
+        $username = $this->param('username');
+        $password = $this->param('password');
         if($username && $password){
             try{
                 $users = $this->service('database')->from('users')
@@ -156,9 +156,9 @@ class AdminController extends AppController {
     
     public function postChangePassword(){
         
-        $oldPassword = $this->params->get('oldpassword');
-        $newPassword = $this->params->get('newpassword');
-        $confirmPassword = $this->params->get('confirmpassword');
+        $oldPassword = $this->param('oldpassword');
+        $newPassword = $this->param('newpassword');
+        $confirmPassword = $this->param('confirmpassword');
         
         if($newPassword && $newPassword == $confirmPassword){
             $identity = $this->service('security')->identity();

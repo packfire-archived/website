@@ -35,6 +35,11 @@ downloadFile:
   actual: "Home:downloadFile"
   params:
     id: '[0-9]+'
+    
+blogPosts:
+   rewrite: "/blog"
+   method: "get"
+   actual: "view.home.HomeBlogView"
   
 admin.home:
   rewrite: "/admin"

@@ -67,7 +67,7 @@ class HomeController extends AppController {
     }
     
     public function postDownloads(){
-        $download = $this->params->get('download');
+        $download = $this->param('download');
         $this->redirect($this->route('downloadFile', array('id' => $download)));
     }
     

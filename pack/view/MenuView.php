@@ -38,6 +38,10 @@ class MenuView extends AppView {
             array(
                 'text' => 'Screencasts',
                 'link' => $this->route('screencasts')
+            ),
+            array(
+                'text' => 'Blog',
+                'link' => $this->route('blogPosts')
             )
         );
         
