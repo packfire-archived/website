@@ -5,11 +5,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-l
-
+    
     # the usual access
-    RewriteRule ^(.*)/*$ index.php?_urlroute_=$1 [L,QSA]
+    RewriteRule ^(.*)/*$ index.php/$1 [L,QSA]
 
     # prevent access to application files
-    RewriteRule ^pack(.*)/*$ index.php?_urlroute_=pack$1 [L,QSA]
+    RewriteRule ^pack(.*)/*$ index.php/pack$1 [L,QSA]
 
 </IfModule>
