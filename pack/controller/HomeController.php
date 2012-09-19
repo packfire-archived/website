@@ -44,11 +44,11 @@ class HomeController extends AppController {
         $this->render();
     }
     
-    public function downloadFile(){
+    public function downloadFile($id){
         $screencasts = $this->service('database')->from('contents')
                 ->where('ContentId = :contentId')->select('ContentId', 'Title', 'Content', 'Created')
                 ->orderByDesc('Created')
-                ->param('contentId', $this->params->get('id'))
+                ->param('contentId', $id)
                 ->map(function($x){
                     return array(
                             'id' => $x[0],
@@ -66,8 +66,7 @@ class HomeController extends AppController {
         $this->render();
     }
     
-    public function postDownloads(){
-        $download = $this->param('download');
+    public function postDownloads($download){
         $this->redirect($this->route('downloadFile', array('id' => $download)));
     }
     

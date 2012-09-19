@@ -26,40 +26,64 @@ screencasts:
   
 downloads:
   rewrite: "/downloads"
-  method: [get, post]
+  method: get
   actual: "Home:downloads"
+  
+downloads.post:
+  rewrite: "/downloads"
+  method: get
+  actual: "Home:downloads"
+  params:
+    downloads: '[0-9]+'
   
 downloadFile:
   rewrite: "/download/{id}"
-  method: "get"
+  method: get
   actual: "Home:downloadFile"
   params:
     id: '[0-9]+'
     
 blogPosts:
    rewrite: "/blog"
-   method: "get"
+   method: get
    actual: "view.home.HomeBlogView"
   
 admin.home:
   rewrite: "/admin"
-  method: [post, get]
+  method: get
   actual: "Admin"
   
 adminSignIn:
   rewrite: "/admin/sign-in"
-  method: [post, get]
+  method: get
   actual: "Admin:signIn"
+  
+adminSignIn.post:
+  rewrite: "/admin/sign-in"
+  method: post
+  actual: "Admin:signIn"
+  params:
+    username: .*
+    password: .*
   
 admin.signOut:
   rewrite: "/admin/sign-out"
-  method: "get"
+  method: get
   actual: "Admin:signOut"
   
 admin.changePassword:
   rewrite: "/admin/password"
-  method: [post, get]
+  method: get
   actual: "Admin:changePassword"
+  
+admin.changePassword.view:
+  rewrite: "/admin/password"
+  method: post
+  actual: "Admin:changePassword"
+  params:
+    oldpassword: '.*'
+    newpassword: '.*'
+    confirmpassword: '.*'
   
 admin.manageUsers:
   rewrite: "/admin/users"
@@ -68,7 +92,16 @@ admin.manageUsers:
   
 admin.managePosts:
   rewrite: "/admin/posts"
-  method: [post, get]
+  method: get
   actual: "Admin:managePosts"
   
+admin.managePosts.post:
+  rewrite: "/admin/posts"
+  method: post
+  actual: "Admin:managePosts"
+  params:
+    title: .*
+    contentType: .*
+    content: .*
+
 ...

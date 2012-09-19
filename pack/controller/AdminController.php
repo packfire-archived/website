@@ -44,37 +44,34 @@ class AdminController extends AppController {
         $this->render();
     }
     
-    public function postIndex(){
-        $title = $this->param('title');
-        $contentType = $this->param('contentType');
-        $content = $this->param('content');
+    public function postIndex($title, $type, $content){
         
-        if($title && $contentType && $content){
+        if($title && $type && $content){
             $identity = $this->service('security')->identity();
             try{
                 $this->service('database')->table('contents')->insert(array(
                     'Author' => $identity['userId'],
                     'Title' => $title,
                     'Content' => $content,
-                    'ContentType' => $contentType,
+                    'ContentType' => $type,
                     'Created' => new pDbExpression('NOW()')
                 ));
                 $this->service('messenger')->send(
                         'psotSuccess',
-                        __CLASS__ . ':getIndex',
+                        __CLASS__ . ':index',
                         'Content created successfully!'
                     );
             }catch(Exception $ex){
                 $this->service('messenger')->send(
                         'postFail',
-                        __CLASS__ . ':getIndex',
+                        __CLASS__ . ':index',
                         $ex->getMessage()
                     );
             }
         }else{
             $this->service('messenger')->send(
                     'postFail',
-                    __CLASS__ . ':getIndex',
+                    __CLASS__ . ':index',
                     'Fields cannot be empty.'
                 );
         }
@@ -92,11 +89,8 @@ class AdminController extends AppController {
         }
     }
     
-    public function postSignIn(){
-        
+    public function postSignIn($username, $password){
         // this is a post request, so you can perform sign in and identity assignment
-        $username = $this->param('username');
-        $password = $this->param('password');
         if($username && $password){
             try{
                 $users = $this->service('database')->from('users')
@@ -114,21 +108,21 @@ class AdminController extends AppController {
                 }else{
                     $this->service('messenger')->send(
                             'loginFail',
-                            __CLASS__ . ':getSignIn',
+                            __CLASS__ . ':signIn',
                             self::INVALID_LOGIN
                         );
                 }
             }catch(Exception $ex){
                 $this->service('messenger')->send(
                         'loginFail',
-                        __CLASS__ . ':getSignIn',
+                        __CLASS__ . ':signIn',
                         $ex->getMessage()
                     );
             }
         }else{
             $this->service('messenger')->send(
                     'loginFail',
-                    __CLASS__ . ':getSignIn',
+                    __CLASS__ . ':signIn',
                     self::INVALID_LOGIN
                 );
         }
@@ -154,11 +148,7 @@ class AdminController extends AppController {
         $this->render();
     }
     
-    public function postChangePassword(){
-        
-        $oldPassword = $this->param('oldpassword');
-        $newPassword = $this->param('newpassword');
-        $confirmPassword = $this->param('confirmpassword');
+    public function postChangePassword($oldPassword, $newPassword, $confirmPassword){
         
         if($newPassword && $newPassword == $confirmPassword){
             $identity = $this->service('security')->identity();
@@ -179,20 +169,20 @@ class AdminController extends AppController {
                             ));
                 $this->service('messenger')->send(
                         'changeSuccess',
-                        __CLASS__ . ':getChangePassword',
+                        __CLASS__ . ':changePassword',
                         'Password changed successfully.'
                     );
             }else{
                 $this->service('messenger')->send(
                         'changeFail',
-                        __CLASS__ . ':getChangePassword',
+                        __CLASS__ . ':changePassword',
                         'Your old password is invalid.'
                     );
             }
         }else{
             $this->service('messenger')->send(
                     'changeFail',
-                    __CLASS__ . ':getChangePassword',
+                    __CLASS__ . ':changePassword',
                     'Your new password is empty or it does not match with the confirmation password.'
                 );
         }
