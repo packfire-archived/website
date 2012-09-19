@@ -52,9 +52,11 @@
                                     $("#screencast-" + id + " .thumb").css({
                                         backgroundImage: "url('" + data["entry"]["media$group"]["media$thumbnail"][1]["url"] + "')"
                                     }).click(function(){
-                                        $("#player-giants .player").html('<iframe width="940" height="529" src="http://www.youtube-nocookie.com/embed/' + video + '?rel=0" frameborder="0"></iframe>');
-                                        $("#player-giants").slideDown();
-                                        return false;
+                                        if($(document).width() > 480){
+                                            $("#player-giants .player").html('<iframe width="940" height="529" src="http://www.youtube-nocookie.com/embed/' + video + '?rel=0" frameborder="0"></iframe>');
+                                            $("#player-giants").slideDown();
+                                            return false;
+                                        }
                                     });
                                 });
                                 $("#player-giants-close").click(function(){$("#player-giants").slideUp();return false;});
