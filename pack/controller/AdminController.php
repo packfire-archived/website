@@ -57,7 +57,7 @@ class AdminController extends AppController {
                     'Created' => new pDbExpression('NOW()')
                 ));
                 $this->service('messenger')->send(
-                        'psotSuccess',
+                        'postSuccess',
                         __CLASS__ . ':index',
                         'Content created successfully!'
                     );

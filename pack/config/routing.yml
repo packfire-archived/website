@@ -53,6 +53,15 @@ admin.home:
   method: get
   actual: "Admin"
   
+admin.home.post:
+  rewrite: "/admin"
+  method: post
+  actual: "Admin"
+  params:
+    title: .*
+    contentType: .*
+    content: .*
+  
 adminSignIn:
   rewrite: "/admin/sign-in"
   method: get
