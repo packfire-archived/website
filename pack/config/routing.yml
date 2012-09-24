@@ -31,17 +31,17 @@ downloads:
   
 downloads.post:
   rewrite: "/downloads"
-  method: get
+  method: post
   actual: "Home:downloads"
   params:
-    downloads: '[0-9]+'
+    download: int
   
 downloadFile:
   rewrite: "/download/{id}"
   method: get
   actual: "Home:downloadFile"
   params:
-    id: '[0-9]+'
+    id: int
     
 blogPosts:
    rewrite: "/blog"
@@ -58,9 +58,9 @@ admin.home.post:
   method: post
   actual: "Admin"
   params:
-    title: .*
-    contentType: .*
-    content: .*
+    title: any
+    contentType: any
+    content: any
   
 adminSignIn:
   rewrite: "/admin/sign-in"
@@ -72,8 +72,8 @@ adminSignIn.post:
   method: post
   actual: "Admin:signIn"
   params:
-    username: .*
-    password: .*
+    username: any
+    password: any
   
 admin.signOut:
   rewrite: "/admin/sign-out"
@@ -90,9 +90,9 @@ admin.changePassword.view:
   method: post
   actual: "Admin:changePassword"
   params:
-    oldpassword: '.*'
-    newpassword: '.*'
-    confirmpassword: '.*'
+    oldpassword: any
+    newpassword: any
+    confirmpassword: any
   
 admin.manageUsers:
   rewrite: "/admin/users"
@@ -109,8 +109,8 @@ admin.managePosts.post:
   method: post
   actual: "Admin:managePosts"
   params:
-    title: .*
-    contentType: .*
-    content: .*
+    title: any
+    contentType: any
+    content: any
 
 ...
