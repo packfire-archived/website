@@ -31,32 +31,12 @@
                     </div>
                 </div>
             </div>
-            <script type="text/javascript" src="assets/scripts/jquery.js"></script>
-            <script type="text/javascript" src="assets/scripts/bootstrap.js"></script>
             <div class="row">
                 <div class="span12">
                     <div id="player-giants">
                         <div class="player"></div>
                         <a href="#" id="player-giants-close"><i class="icon-chevron-up icon-white"></i> Close</a>
                     </div>
-                    <script type="text/javascript">
-                        function loadVideo(id, video){
-                            (function($){
-                                $.getJSON('http://gdata.youtube.com/feeds/api/videos/' + video + '?v=2&alt=json', function(data){
-                                    $("#screencast-" + id + " .thumb").css({
-                                        backgroundImage: "url('" + data["entry"]["media$group"]["media$thumbnail"][1]["url"] + "')"
-                                    }).click(function(){
-                                        if($(document).width() > 480){
-                                            $("#player-giants .player").html('<iframe width="940" height="529" src="http://www.youtube-nocookie.com/embed/' + video + '?rel=0" frameborder="0"></iframe>');
-                                            $("#player-giants").slideDown();
-                                            return false;
-                                        }
-                                    });
-                                });
-                                $("#player-giants-close").click(function(){$("#player-giants").slideUp();return false;});
-                            })(jQuery);
-                        }
-                    </script>
                 </div>
                 {{! 
                     this is a Mustache comment!
@@ -76,6 +56,9 @@
                     if JavaScript fails to run, we can let the user click on the video
                     to go YouTube and watch it there
                 }}
+                <script type="text/javascript">
+                    var screencastLoads = [];
+                </script>
                 {{#screencasts}}
                 <div class="span4 content-box">
                     <div class="screencast-box" id="screencast-{{id}}">
@@ -85,21 +68,30 @@
                         </a>
                     </div>
                     <script type="text/javascript">
-                        loadVideo('{{id}}', '{{videoId}}');
+                        screencastLoads['{{id}}'] = '{{videoId}}';
                     </script>
                 </div>
                 {{/screencasts}}
             </div>
-            <footer>
-                <div class="row">
-                    <div class="span12">
-                        <div>
-                        <p>&copy; Copyright 2012 <a href="http://twitter.com/_mauris" target="_blank">Sam-Mauris Yong</a>, All Rights Reserved. This website's source code is <a href="http://github.com/packfire/website" target="_blank">hosted on Github</a>.</p>
-                        <p>Packfire Framework and this website are both released open source under the New BSD License.</p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            {{>Footer}}
+            <script type="text/javascript">
+                (function($){
+                    $.each(screencastLoads, function(id, video){
+                        $.getJSON('http://gdata.youtube.com/feeds/api/videos/' + video + '?v=2&alt=json', function(data){
+                            $("#screencast-" + id + " .thumb").css({
+                                backgroundImage: "url('" + data["entry"]["media$group"]["media$thumbnail"][1]["url"] + "')"
+                            }).click(function(){
+                                if($(document).width() > 480){
+                                    $("#player-giants .player").html('<iframe width="940" height="529" src="http://www.youtube-nocookie.com/embed/' + video + '?rel=0" frameborder="0"></iframe>');
+                                    $("#player-giants").slideDown();
+                                    return false;
+                                }
+                            });
+                        });
+                        $("#player-giants-close").click(function(){$("#player-giants").slideUp();return false;});
+                    });
+                })(jQuery);
+            </script>
         </div>
     </body>
 </html>
