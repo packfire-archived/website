@@ -14,6 +14,9 @@
 #    - param1
 #    - param2
 
+exception.handler:
+  class: library.ExceptionHandler
+
 security: # the security module is optional. The default security module does not identify or authenticate the users
   class: app.AppSecurityModule
 

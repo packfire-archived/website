@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Packfire Framework for PHP - 404 Not Found</title>
+        <meta name="robots" content="noindex, nofollow">
+        {{>Header}}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span8 offset2 content-box" style="margin-top: 50px;">
+                    <div class="pull-right" style="margin-top:-60px;margin-bottom:-50px;margin-right:-75px;">
+                        <img src="assets/images/packfire.notfound.logo.png" width="250" height="250" alt="Exception" />
+                    </div>
+                    <div style="margin: 20px;">
+                        <h1>{{#is404}}Page not found{{/is404}}{{^is404}}Application Error{{/is404}}</h1>
+                        <blockquote>We didn't start the fire, It was always burning, Since the world's been turning - Billy Joel</blockquote>
+                        <a class="btn" href="#" onclick="history.go(-1);return false;">Revisit previous page</a> <a class="btn btn-warning" href="/">Go to homepage</a>
+                    </div>
+                </div>
+                <div class="span8 offset2 content-box" style="margin-top: 20px;">
+                    {{#is404}}
+                    <iframe id="pnlNotFound" src="http://notfound-static.fwebservices.be/404/index.html?key=f525b711318ba7863ea111ee5579cbe1" style="width:100%;" height="650" frameborder="0"></iframe>
+                    {{/is404}}
+                    {{^is404}}
+                    <div style="margin: 30px;">We apologise for the broken web page and a code monkey has been dispatched to re-ignite the fire. </div>
+                    {{/is404}}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
