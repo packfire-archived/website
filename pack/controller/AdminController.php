@@ -17,7 +17,11 @@ class AdminController extends AppController {
     const INVALID_LOGIN = 'Invalid username or password entered.';
     
     protected function handleAuthorization(){
-        $this->redirect($this->route('adminSignIn'));
+        if(substr($this->route->name(), 0, 6) == 'admin.' 
+                && !$this->service('security')->identity()){
+            $this->redirect($this->route('adminSignIn'));
+        }
+        return true;
     }
     
     public function index(){
@@ -44,16 +48,16 @@ class AdminController extends AppController {
         $this->render();
     }
     
-    public function postIndex($title, $type, $content){
+    public function postIndex($title, $contentType, $content){
         
-        if($title && $type && $content){
+        if($title && $contentType && $content){
             $identity = $this->service('security')->identity();
             try{
                 $this->service('database')->table('contents')->insert(array(
                     'Author' => $identity['userId'],
                     'Title' => $title,
                     'Content' => $content,
-                    'ContentType' => $type,
+                    'ContentType' => $contentType,
                     'Created' => new pDbExpression('NOW()')
                 ));
                 $this->service('messenger')->send(
