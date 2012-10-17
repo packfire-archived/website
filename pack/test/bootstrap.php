@@ -7,15 +7,26 @@
  * Packfire and PHPUnit integration.
  *
  * @author Sam-Mauris Yong / mauris@hotmail.sg
- * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
- * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @since 1.0-sofia
  */
 
-chdir('./../..');
+define('__PACKFIRE_START__', microtime(true));
+define('__APP_ROOT__', '');
 
-define('__PACKFIRE_PATH__', '{{packfirePath}}');
-define('__APP_ROOT__', getcwd() . DIRECTORY_SEPARATOR);
+require 'constants.php';
+$path = null;
+if(__PACKFIRE_ROOT__){
+    $path = __PACKFIRE_ROOT__;
+}else{
+    $namespaces = include('vendor/composer/autoload_namespaces.php');
+    if($namespaces){
+        $path = $namespaces['Packfire'];
+    }
+}
 
-ob_start();
-include(__PACKFIRE_PATH__ . '/Packfire.php');
+if($path){
+    require $path . DIRECTORY_SEPARATOR . 'Packfire\Packfire.php';
+    $packfire = new Packfire\Packfire();
+    $packfire->classLoader()->register(true);
+}else{
+    throw new \Exception('Could not bootstrap test because Packfire Framework was not installed.');
+}

@@ -12,12 +12,13 @@
  */
 
 /**
- * Location of the Packfire class
- */
-define('__PACKFIRE_PATH__', 'C:\\wamp\\www\\packfire\\packfire\\');
-
-/**
  * Set the application environment.
  * Determines what configuration files to be loaded. 
  */
-define('__ENVIRONMENT__' , 'local');
+if(getenv('PACKFIRE_ENV')){
+    define('__ENVIRONMENT__' , getenv('PACKFIRE_ENV'));
+}else{
+    define('__ENVIRONMENT__' , '');
+}
+
+define('__PACKFIRE_ROOT__', '');
