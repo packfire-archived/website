@@ -1,16 +1,19 @@
 <?php
-pload('app.AppView');
+namespace Packfire\Web\Admin;
+
+use Packfire\Application\Pack\View;
+use Packfire\Web\MenuView;
 
 /**
- * AdminIndexView View
+ * IndexView View
  *
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2012, Sam-Mauris Yong / mauris@hotmail.sg
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package app.view
+ * @package Packfire\Web\Admin
  * @since 1.0
  */
-class AdminIndexView extends AppView {
+class IndexView extends View {
     
     protected function create(){
         $menu = new MenuView();

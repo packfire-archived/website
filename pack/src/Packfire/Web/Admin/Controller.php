@@ -1,18 +1,20 @@
 <?php
-pload('app.AppController');
-pload('model.User');
-pload('packfire.database.pDbExpression');
+namespace Packfire\Web\Admin;
+
+use Packfire\Application\Pack\Controller as CoreController;
+use Packfire\DateTime\DateTime;
+use Packfire\Database\Expression;
 
 /**
- * AdminController Controller
+ * Controller class
  *
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2012, Sam-Mauris Yong / mauris@hotmail.sg
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package app.controler
+ * @package Packfire\Web\Admin
  * @since 1.0
  */
-class AdminController extends AppController {
+class Controller extends CoreController {
     
     const INVALID_LOGIN = 'Invalid username or password entered.';
     
@@ -58,14 +60,14 @@ class AdminController extends AppController {
                     'Title' => $title,
                     'Content' => $content,
                     'ContentType' => $contentType,
-                    'Created' => new pDbExpression('NOW()')
+                    'Created' => new Expression('NOW()')
                 ));
                 $this->service('messenger')->send(
                         'postSuccess',
                         __CLASS__ . ':index',
                         'Content created successfully!'
                     );
-            }catch(Exception $ex){
+            }catch(\Exception $ex){
                 $this->service('messenger')->send(
                         'postFail',
                         __CLASS__ . ':index',
@@ -101,7 +103,7 @@ class AdminController extends AppController {
                         ->where('Username = :username AND Password = :password')
                         ->param('username', $username)
                         ->param('password', hash('sha256', $password))
-                        ->model($this->model('User'))
+                        ->model($this->model('Packfire\Web\User'))
                         ->limit(0, 1)
                         ->fetch();
                 if($users->count() > 0){
@@ -116,7 +118,7 @@ class AdminController extends AppController {
                             self::INVALID_LOGIN
                         );
                 }
-            }catch(Exception $ex){
+            }catch(\Exception $ex){
                 $this->service('messenger')->send(
                         'loginFail',
                         __CLASS__ . ':signIn',
@@ -161,7 +163,7 @@ class AdminController extends AppController {
                     ->where('UserId = :userId AND Password = :password')
                     ->param('userId', $identity['userId'])
                     ->param('password', hash('sha256', $oldPassword))
-                    ->model($this->model('User'))
+                    ->model($this->model('Packfire\Web\User'))
                     ->limit(0, 1)
                     ->fetch()->get(0);
             if($user){
@@ -194,7 +196,7 @@ class AdminController extends AppController {
     }
     
     private function renderTimeOfDay($user){
-        $now = pDateTime::now();
+        $now = DateTime::now();
         $now->timezone($user['timezone']); // convert to user's timezone
         $hour = $now->time()->hour();
         $result = 'night';

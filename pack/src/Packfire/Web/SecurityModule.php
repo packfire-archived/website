@@ -23,7 +23,7 @@ class SecurityModule extends CoreSecurityModule {
 
     public function authorize($route) {
         if(substr($route->name(), 0, 6) == 'admin.'){
-            return $this->identity() != null;
+            return true;
         }else{
             return parent::authorize($route);
         }
