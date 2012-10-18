@@ -18,7 +18,7 @@
 if(getenv('PACKFIRE_ENV')){
     define('__ENVIRONMENT__' , getenv('PACKFIRE_ENV'));
 }else{
-    define('__ENVIRONMENT__' , 'local');
+    define('__ENVIRONMENT__' , '');
 }
 
 define('__PACKFIRE_ROOT__', 'C:\\Users\\Sam Yong\\Documents\\GitHub\\framework\\src');
