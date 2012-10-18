@@ -13,6 +13,12 @@
 #  parameters:
 #    - param1
 #    - param2
+ 
+exception.handler:
+  class: Packfire\Exception\Handler\HttpHandler
+  parameters:
+    - Packfire\Web\ExceptionView
+
 
 security: # the security module is optional. The default security module does not identify or authenticate the users
   class: Packfire\Web\SecurityModule
