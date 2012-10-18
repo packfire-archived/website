@@ -51,7 +51,7 @@ blogPosts:
 admin.home:
   rewrite: "/admin"
   method: get
-  actual: "Admin"
+  actual: "Packfire\Web\Admin\Controller"
   
 admin.home.post:
   rewrite: "/admin"

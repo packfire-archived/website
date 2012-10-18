@@ -31,7 +31,7 @@ messenger:
 logger:
   class: Packfire\Log\Logger
   parameters: 
-    - 'pack/storage/log/default.log'
+    - 'storage/log/default.log'
 
 #set the session storage method
 session.storage:
