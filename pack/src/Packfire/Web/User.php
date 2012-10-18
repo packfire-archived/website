@@ -1,6 +1,8 @@
 <?php
-pload('packfire.database.IDbModel');
-pload('packfire.ioc.pBucketUser');
+namespace Packfire\Web;
+
+use Packfire\Database\IModel;
+use Packfire\IoC\BucketUser;
 
 /**
  * User class
@@ -8,10 +10,10 @@ pload('packfire.ioc.pBucketUser');
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2012, Sam-Mauris Yong / mauris@hotmail.sg
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package app.model
+ * @package Packfire\Web
  * @since 1.0
  */
-class User extends pBucketUser implements IDbModel {
+class User extends BucketUser implements IModel {
     
     public $userId;
     
