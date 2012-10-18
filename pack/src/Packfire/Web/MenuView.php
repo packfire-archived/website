@@ -1,5 +1,7 @@
 <?php
-pload('app.AppView');
+namespace Packfire\Web;
+
+use Packfire\Application\Pack\View;
 
 /**
  * MenuView View
@@ -10,7 +12,7 @@ pload('app.AppView');
  * @package app.view
  * @since 1.0
  */
-class MenuView extends AppView {
+class MenuView extends View {
     
     private $active;
     
@@ -19,9 +21,7 @@ class MenuView extends AppView {
         $this->active = $active;
     }
     
-    protected function create(){
-        $this->template('menu');
-        
+    protected function create(){        
         $menu = array(
             array(
                 'text' => 'Home',

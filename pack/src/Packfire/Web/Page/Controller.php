@@ -1,18 +1,21 @@
 <?php
-pload('app.AppController');
+namespace Packfire\Web\Page;
+
+use Packfire\Application\Pack\Controller as CoreController;
+use Packfire\IO\File\Path;
+use Packfire\DateTime\DateTime;
 
 /**
- * HomeController class
+ * Controller class
  * 
- * Handles interaction for home
+ * Handles interaction for pages
  *
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package app.controller
- * @since 1.0
+ * @package Packfire\Web\Page
  */
-class HomeController extends AppController {
+class Controller extends CoreController {
     
     public function index(){
         $this->state['features'] = array(
@@ -54,8 +57,8 @@ class HomeController extends AppController {
                             'id' => $x[0],
                             'title' => $x[1],
                             'url' => $x[2],
-                            'filename' => pPath::baseName($x[2]),
-                            'date' => pDateTime::fromString($x[3])->format('h:i:sa, j M Y')
+                            'filename' => Path::baseName($x[2]),
+                            'date' => DateTime::fromString($x[3])->format('h:i:sa, j M Y')
                         );
                 })->fetch();
         if($screencasts->count() > 0){
@@ -79,8 +82,8 @@ class HomeController extends AppController {
                             'id' => $x[0],
                             'title' => $x[1],
                             'url' => $x[2],
-                            'filename' => pPath::baseName($x[2]),
-                            'date' => pDateTime::fromString($x[3])->format('h:i:sa, j M Y')
+                            'filename' => Path::baseName($x[2]),
+                            'date' => DateTime::fromString($x[3])->format('h:i:sa, j M Y')
                         );
                 })->fetch();
         if($screencasts->count() > 0){

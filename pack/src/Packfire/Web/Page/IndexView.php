@@ -1,17 +1,20 @@
 <?php
-pload('app.AppView');
+namespace Packfire\Web\Page;
+
+use Packfire\Application\Pack\View;
+use Packfire\Web\MenuView;
 
 /**
- * HomeIndexView class
+ * IndexView class
  * 
  * View for the homepage
  *
  * @author Sam-Mauris Yong / mauris@hotmail.sg
+ * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package app.view
- * @since 1.0
+ * @package Packfire\Web\Page
  */
-class HomeIndexView extends AppView {
+class IndexView extends View {
     
     protected function create() {
         $menu = new MenuView(0);

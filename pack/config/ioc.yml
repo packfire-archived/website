@@ -14,39 +14,30 @@
 #    - param1
 #    - param2
 
-exception.handler:
-  class: packfire.exception.handler.pHttpExceptionHandler
-  parameters:
-    - 'view.ExceptionView'
-
 security: # the security module is optional. The default security module does not identify or authenticate the users
-  class: app.AppSecurityModule
+  class: Packfire\Web\SecurityModule
 
 # the messenger service
 messenger:
-  class: packfire.session.pMessenger
-
+  class: Packfire\Session\Messenger
+  
 #configure the logging functionality
 logger:
-  class: packfire.log.pLogger
+  class: Packfire\Log\Logger
   parameters: 
     - 'pack/storage/log/default.log'
 
 #set the session storage method
 session.storage:
-  class: packfire.session.storage.pSessionStorage
+  class: Packfire\Session\Storage\SessionStorage
   parameters: []
   
 # set the cache to use
 cache:
-  class: packfire.cache.pFileCache
+  class: Packfire\Cache\FileCache
   
 # this sets the debugger output method
 debugger.output:
-  class: packfire.debugger.firebug.pFirebugDebugOutput
-  
-router:
-  class: packfire.routing.pRouter
-  
+  class: Packfire\Debugger\Output\Firebug
 
 ...

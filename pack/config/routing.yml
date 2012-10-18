@@ -12,41 +12,41 @@
 home:
   rewrite: "/"
   method: "get"
-  actual: "Home"
+  actual: "Packfire\Web\Page\Controller"
 
 getStarted:
   rewrite: "/get-started"
   method: "get"
-  actual: "view.home.HomeGetStartedView"
+  actual: "Packfire\Web\Page\GetStartedView"
   
 screencasts:
   rewrite: "/screencasts"
   method: "get"
-  actual: "Home:screencasts"
+  actual: "Packfire\Web\Page\Controller:screencasts"
   
 downloads:
   rewrite: "/downloads"
   method: get
-  actual: "Home:downloads"
+  actual: "Packfire\Web\Page\Controller:downloads"
   
 downloads.post:
   rewrite: "/downloads"
   method: post
-  actual: "Home:downloads"
+  actual: "Packfire\Web\Page\Controller:downloads"
   params:
     download: int
   
 downloadFile:
   rewrite: "/download/{id}"
   method: get
-  actual: "Home:downloadFile"
+  actual: "Packfire\Web\Page\Controller:downloadFile"
   params:
     id: int
     
 blogPosts:
    rewrite: "/blog"
    method: get
-   actual: "view.home.HomeBlogView"
+   actual: "Packfire\Web\Page\BlogView"
   
 admin.home:
   rewrite: "/admin"
@@ -56,7 +56,7 @@ admin.home:
 admin.home.post:
   rewrite: "/admin"
   method: post
-  actual: "Admin"
+  actual: "Packfire\Web\Admin\Controller"
   params:
     title: any
     contentType: any
@@ -65,12 +65,12 @@ admin.home.post:
 adminSignIn:
   rewrite: "/admin/sign-in"
   method: get
-  actual: "Admin:signIn"
+  actual: "Packfire\Web\Admin\Controller:signIn"
   
 adminSignIn.post:
   rewrite: "/admin/sign-in"
   method: post
-  actual: "Admin:signIn"
+  actual: "Packfire\Web\Admin\Controller:signIn"
   params:
     username: any
     password: any
@@ -78,17 +78,17 @@ adminSignIn.post:
 admin.signOut:
   rewrite: "/admin/sign-out"
   method: get
-  actual: "Admin:signOut"
+  actual: "Packfire\Web\Admin\Controller:signOut"
   
 admin.changePassword:
   rewrite: "/admin/password"
   method: get
-  actual: "Admin:changePassword"
+  actual: "Packfire\Web\Admin\Controller:changePassword"
   
 admin.changePassword.view:
   rewrite: "/admin/password"
   method: post
-  actual: "Admin:changePassword"
+  actual: "Packfire\Web\Admin\Controller:changePassword"
   params:
     oldpassword: any
     newpassword: any
@@ -97,17 +97,17 @@ admin.changePassword.view:
 admin.manageUsers:
   rewrite: "/admin/users"
   method: [post, get]
-  actual: "Admin:manageUsers"
+  actual: "Packfire\Web\Admin\Controller:manageUsers"
   
 admin.managePosts:
   rewrite: "/admin/posts"
   method: get
-  actual: "Admin:managePosts"
+  actual: "Packfire\Web\Admin\Controller:managePosts"
   
 admin.managePosts.post:
   rewrite: "/admin/posts"
   method: post
-  actual: "Admin:managePosts"
+  actual: "Packfire\Web\Admin\Controller:managePosts"
   params:
     title: any
     contentType: any

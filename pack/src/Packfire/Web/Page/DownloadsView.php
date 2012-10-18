@@ -1,16 +1,18 @@
 <?php
-pload('app.AppView');
+namespace Packfire\Web\Page;
+
+use Packfire\Application\Pack\View;
+use Packfire\Web\MenuView;
 
 /**
- * HomeDownloads View
+ * DownloadsView class
  *
  * @author Sam-Mauris Yong / mauris@hotmail.sg
- * @copyright Copyright (c) 2012, Sam-Mauris Yong / mauris@hotmail.sg
+ * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package app.view
- * @since 1.0
+ * @package Packfire\Web\Page
  */
-class HomeDownloadsView extends AppView {
+class DownloadsView extends View {
     
     protected function create(){
         $menu = new MenuView(2);

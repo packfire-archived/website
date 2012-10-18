@@ -1,8 +1,10 @@
 <?php
-pload('packfire.security.pSecurityModule');
+namespace Packfire\Web;
+
+use Packfire\Security\SecurityModule as CoreSecurityModule;
 
 /**
- * AppSecurityModule class
+ * SecurityModule class
  * 
  * The application's security module
  * Configure by overriding the appropriate methods.
@@ -10,10 +12,10 @@ pload('packfire.security.pSecurityModule');
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package candice.app
+ * @package Packfire\Web
  * @since 1.0-sofia
  */
-class AppSecurityModule extends pSecurityModule {
+class SecurityModule extends CoreSecurityModule {
     
     public function authenticate() {
         return parent::authenticate();
