@@ -10,8 +10,8 @@
 ---
 
 app:
-  rootUrl: "http://localhost/packfire-web"
-  debug: true
+  rootUrl: "http://mauris.sg/packfire"
+  debug: false
   
 database:
   default: 
