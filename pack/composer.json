@@ -5,9 +5,8 @@
             "url": "https://github.com/packfire/packfire-framework.git"
         }
     ],
-    "require-dev":{
+    "require":{
         "php": ">=5.3.0",
-        "packfire/packfire": ">=2.0.0"
-    },
-    "minimum-stability": "dev"
+        "packfire/packfire": "2.0.*"
+    }
 }
