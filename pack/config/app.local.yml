@@ -10,9 +10,9 @@
 ---
 
 app:
-  rootUrl: "http://localhost/packfire-web"
+  rootUrl: "http://packfire.dev"
   debug: true
-  
+
 database:
   default: 
     driver: mysql

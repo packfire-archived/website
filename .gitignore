@@ -1,4 +1,5 @@
 pack/vendor
-composer.phar
+*.phar
 pack/phpunit.xml
-pack/constants.php
+pack/env
+pack/packfire
