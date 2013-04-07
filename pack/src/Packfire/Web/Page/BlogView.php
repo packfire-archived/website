@@ -16,7 +16,7 @@ class BlogView extends View {
     
     protected function create(){
         $menu = new MenuView(4);
-        $menu->copyBucket($this);
+        $menu($this->ioc);
         $this->define('menu', $menu);
         
         $rootUrl = $this->route('home');

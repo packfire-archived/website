@@ -16,7 +16,7 @@ class DownloadFileView extends View {
     
     protected function create(){
         $menu = new MenuView(2);
-        $menu->copyBucket($this);
+        $menu($this->ioc);
         $this->define('menu', $menu);
         
         $rootUrl = $this->route('home');

@@ -48,7 +48,7 @@ class Controller extends CoreController {
     }
     
     public function downloadFile($id){
-        $screencasts = $this->service('database')->from('contents')
+        $screencasts = $this->ioc['database']->from('contents')
                 ->where('ContentId = :contentId')->select('ContentId', 'Title', 'Content', 'Created')
                 ->orderByDesc('Created')
                 ->param('contentId', $id)
@@ -74,7 +74,7 @@ class Controller extends CoreController {
     }
     
     public function downloads(){
-        $screencasts = $this->service('database')->from('contents')
+        $screencasts = $this->ioc['database']->from('contents')
                 ->where('ContentType = 2')->select('ContentId', 'Title', 'Content', 'Created')
                 ->orderByDesc('Created')
                 ->map(function($x){
@@ -95,7 +95,7 @@ class Controller extends CoreController {
     }
     
     public function screencasts(){
-        $screencasts = $this->service('database')->from('contents')
+        $screencasts = $this->ioc['database']->from('contents')
                 ->where('ContentType = 1')->select('ContentId', 'Title', 'Content')
                 ->orderByDesc('Created')
                 ->map(function($x){
@@ -108,7 +108,7 @@ class Controller extends CoreController {
         if($screencasts->count() > 0){
             $this->state = $screencasts;
         }else{
-            $this->state = false;
+            $this->state = null;
         }
         $this->render();
     }

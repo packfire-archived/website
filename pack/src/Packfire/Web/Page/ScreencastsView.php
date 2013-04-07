@@ -18,7 +18,7 @@ class ScreencastsView extends View {
     
     protected function create() {
         $menu = new MenuView(3);
-        $menu->copyBucket($this);
+        $menu($this->ioc);
         $this->define('menu', $menu);
         
         $rootUrl = $this->route('home');

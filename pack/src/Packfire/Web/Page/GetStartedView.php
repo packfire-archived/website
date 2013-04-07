@@ -18,7 +18,7 @@ class GetStartedView extends View {
     
     protected function create() {
         $menu = new MenuView(1);
-        $menu->copyBucket($this);
+        $menu($this->ioc);
         $this->define('menu', $menu);
         
         $rootUrl = $this->route('home');

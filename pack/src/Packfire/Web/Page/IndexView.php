@@ -18,7 +18,7 @@ class IndexView extends View {
     
     protected function create() {
         $menu = new MenuView(0);
-        $menu->copyBucket($this);
+        $menu($this->ioc);
         $this->define('menu', $menu);
         
         $this->define('features', $this->state->get('features'));
