@@ -10,104 +10,104 @@
 ---
 
 home:
-  rewrite: "/"
-  method: "get"
-  actual: "Packfire\Web\Page\Controller"
+  rewrite: '/'
+  method: 'get'
+  actual: 'Packfire\Web\Page\Controller'
 
 getStarted:
-  rewrite: "/get-started"
-  method: "get"
-  actual: "Packfire\Web\Page\GetStartedView"
-  
+  rewrite: '/get-started'
+  method: 'get'
+  actual: 'Packfire\Web\Page\GetStartedView'
+
 screencasts:
-  rewrite: "/screencasts"
-  method: "get"
-  actual: "Packfire\Web\Page\Controller:screencasts"
-  
+  rewrite: '/screencasts'
+  method: 'get'
+  actual: 'Packfire\Web\Page\Controller:screencasts'
+
 downloads:
-  rewrite: "/downloads"
+  rewrite: '/downloads'
   method: get
-  actual: "Packfire\Web\Page\Controller:downloads"
-  
+  actual: 'Packfire\Web\Page\Controller:downloads'
+
 downloads.post:
-  rewrite: "/downloads"
+  rewrite: '/downloads'
   method: post
-  actual: "Packfire\Web\Page\Controller:downloads"
+  actual: 'Packfire\Web\Page\Controller:downloads'
   params:
     download: int
-  
+
 downloadFile:
-  rewrite: "/download/{id}"
+  rewrite: '/download/{id}'
   method: get
-  actual: "Packfire\Web\Page\Controller:downloadFile"
+  actual: 'Packfire\Web\Page\Controller:downloadFile'
   params:
     id: int
-    
+
 blogPosts:
-   rewrite: "/blog"
+   rewrite: '/blog'
    method: get
-   actual: "Packfire\Web\Page\BlogView"
-  
+   actual: 'Packfire\Web\Page\BlogView'
+
 admin.home:
-  rewrite: "/admin"
+  rewrite: '/admin'
   method: get
-  actual: "Packfire\Web\Admin\Controller"
-  
+  actual: 'Packfire\Web\Admin\Controller'
+
 admin.home.post:
-  rewrite: "/admin"
+  rewrite: '/admin'
   method: post
-  actual: "Packfire\Web\Admin\Controller"
+  actual: 'Packfire\Web\Admin\Controller'
   params:
     title: any
     contentType: any
     content: any
-  
+
 adminSignIn:
-  rewrite: "/admin/sign-in"
+  rewrite: '/admin/sign-in'
   method: get
-  actual: "Packfire\Web\Admin\Controller:signIn"
-  
+  actual: 'Packfire\Web\Admin\Controller:signIn'
+
 adminSignIn.post:
-  rewrite: "/admin/sign-in"
+  rewrite: '/admin/sign-in'
   method: post
-  actual: "Packfire\Web\Admin\Controller:signIn"
+  actual: 'Packfire\Web\Admin\Controller:signIn'
   params:
     username: any
     password: any
-  
+
 admin.signOut:
-  rewrite: "/admin/sign-out"
+  rewrite: '/admin/sign-out'
   method: get
-  actual: "Packfire\Web\Admin\Controller:signOut"
-  
+  actual: 'Packfire\Web\Admin\Controller:signOut'
+
 admin.changePassword:
-  rewrite: "/admin/password"
+  rewrite: '/admin/password'
   method: get
-  actual: "Packfire\Web\Admin\Controller:changePassword"
-  
+  actual: 'Packfire\Web\Admin\Controller:changePassword'
+
 admin.changePassword.view:
-  rewrite: "/admin/password"
+  rewrite: '/admin/password'
   method: post
-  actual: "Packfire\Web\Admin\Controller:changePassword"
+  actual: 'Packfire\Web\Admin\Controller:changePassword'
   params:
     oldpassword: any
     newpassword: any
     confirmpassword: any
-  
+
 admin.manageUsers:
-  rewrite: "/admin/users"
+  rewrite: '/admin/users'
   method: [post, get]
-  actual: "Packfire\Web\Admin\Controller:manageUsers"
-  
+  actual: 'Packfire\Web\Admin\Controller:manageUsers'
+
 admin.managePosts:
-  rewrite: "/admin/posts"
+  rewrite: '/admin/posts'
   method: get
-  actual: "Packfire\Web\Admin\Controller:managePosts"
-  
+  actual: 'Packfire\Web\Admin\Controller:managePosts'
+
 admin.managePosts.post:
-  rewrite: "/admin/posts"
+  rewrite: '/admin/posts'
   method: post
-  actual: "Packfire\Web\Admin\Controller:managePosts"
+  actual: 'Packfire\Web\Admin\Controller:managePosts'
   params:
     title: any
     contentType: any
