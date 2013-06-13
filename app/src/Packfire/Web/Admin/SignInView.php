@@ -17,9 +17,9 @@ class SignInView extends View {
     
     protected function create(){
         $menu = new MenuView();
-        $menu->copyBucket($this);
+        $menu($this->ioc);
         $this->define('menu', $menu);
-        
+                
         $rootUrl = $this->route('home');
         $this->define('rootUrl', $rootUrl);
         

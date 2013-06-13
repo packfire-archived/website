@@ -17,13 +17,13 @@ class IndexView extends View {
     
     protected function create(){
         $menu = new MenuView();
-        $menu->copyBucket($this);
+        $menu($this->ioc);
         $this->define('menu', $menu);
-        
+
         $rootUrl = $this->route('home');
         $this->define('rootUrl', $rootUrl);
         
-        $identity = $this->service('security')->identity();
+        $identity = $this->ioc['security']->identity();
         $this->define('username', $identity['name']);
         $this->define('timeOfTheDay', $this->state->get('timeOfDay'));
         
