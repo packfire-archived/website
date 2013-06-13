@@ -1,4 +1,4 @@
-pack/vendor
-pack/phpunit.xml
-pack/env
-pack/packfire
+app/vendor
+app/phpunit.xml
+app/env
+app/packfire
