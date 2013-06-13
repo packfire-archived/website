@@ -19,7 +19,7 @@ class Controller extends CoreController {
     const INVALID_LOGIN = 'Invalid username or password entered.';
     
     protected function handleAuthorization(){
-        if(substr($this->route->name(), 0, 6) == 'admin.' 
+        if(substr($this->ioc['route']->name(), 0, 6) == 'admin.' 
                 && !$this->service('security')->identity()){
             $this->redirect($this->route('adminSignIn'));
         }
