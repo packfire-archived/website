@@ -27,6 +27,7 @@ session:
   secure: false
 
 routing:
+  routes: "routing"
   enabled: true
   caching: true
 
