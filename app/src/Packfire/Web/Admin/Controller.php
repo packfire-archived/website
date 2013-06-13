@@ -20,17 +20,17 @@ class Controller extends CoreController {
     
     protected function handleAuthorization(){
         if(substr($this->ioc['route']->name(), 0, 6) == 'admin.' 
-                && !$this->service('security')->identity()){
+                && !$this->ioc['security']->identity()){
             $this->redirect($this->route('adminSignIn'));
         }
         return true;
     }
     
     public function index(){
-        $identity = $this->service('security')->identity();
+        $identity = $this->ioc['security']->identity();
         $this->state['timeOfDay'] = $this->renderTimeOfDay($identity);
         
-        $this->state['types'] = $this->service('database')->from('contenttypes')
+        $this->state['types'] = $this->ioc['database']->from('contenttypes')
             ->select('ContentTypeId', 'ContentType')
             ->map(function($x){
                 return array(
@@ -40,11 +40,11 @@ class Controller extends CoreController {
             })
             ->fetch();
             
-        if($this->service('messenger')->check('postFail')){
-            $this->state['fail'] = $this->service('messenger')->read('postFail');
+        if($this->ioc['messenger']->check('postFail')){
+            $this->state['fail'] = $this->ioc['messenger']->read('postFail');
         }
-        if($this->service('messenger')->check('postSuccess')){
-            $this->state['success'] = $this->service('messenger')->read('postSuccess');
+        if($this->ioc['messenger']->check('postSuccess')){
+            $this->state['success'] = $this->ioc['messenger']->read('postSuccess');
         }
             
         $this->render();
@@ -53,29 +53,29 @@ class Controller extends CoreController {
     public function postIndex($title, $contentType, $content){
         
         if($title && $contentType && $content){
-            $identity = $this->service('security')->identity();
+            $identity = $this->ioc['security']->identity();
             try{
-                $this->service('database')->table('contents')->insert(array(
+                $this->ioc['database']->table('contents')->insert(array(
                     'Author' => $identity['userId'],
                     'Title' => $title,
                     'Content' => $content,
                     'ContentType' => $contentType,
                     'Created' => new Expression('NOW()')
                 ));
-                $this->service('messenger')->send(
+                $this->ioc['messenger']->send(
                         'postSuccess',
                         __CLASS__ . ':index',
                         'Content created successfully!'
                     );
             }catch(\Exception $ex){
-                $this->service('messenger')->send(
+                $this->ioc['messenger']->send(
                         'postFail',
                         __CLASS__ . ':index',
                         $ex->getMessage()
                     );
             }
         }else{
-            $this->service('messenger')->send(
+            $this->ioc['messenger']->send(
                     'postFail',
                     __CLASS__ . ':index',
                     'Fields cannot be empty.'
@@ -85,11 +85,11 @@ class Controller extends CoreController {
     }
     
     public function signIn(){
-        if($this->service('security')->identity()){
+        if($this->ioc['security']->identity()){
             $this->redirect($this->route('admin.home'));
         }else{
-            if($this->service('messenger')->check('loginFail')){
-                $this->state['fail'] = $this->service('messenger')->read('loginFail');
+            if($this->ioc['messenger']->check('loginFail')){
+                $this->state['fail'] = $this->ioc['messenger']->read('loginFail');
             }
             $this->render();
         }
@@ -99,7 +99,7 @@ class Controller extends CoreController {
         // this is a post request, so you can perform sign in and identity assignment
         if($username && $password){
             try{
-                $users = $this->service('database')->from('users')
+                $users = $this->ioc['database']->from('users')
                         ->where('Username = :username AND Password = :password')
                         ->param('username', $username)
                         ->param('password', hash('sha256', $password))
@@ -108,25 +108,25 @@ class Controller extends CoreController {
                         ->fetch();
                 if($users->count() > 0){
                     $user = (array)$users[0];
-                    $this->service('security')->identity($user);
+                    $this->ioc['security']->identity($user);
                     $this->redirect($this->route('admin.home'));
                     return;
                 }else{
-                    $this->service('messenger')->send(
+                    $this->ioc['messenger']->send(
                             'loginFail',
                             __CLASS__ . ':signIn',
                             self::INVALID_LOGIN
                         );
                 }
             }catch(\Exception $ex){
-                $this->service('messenger')->send(
+                $this->ioc['messenger']->send(
                         'loginFail',
                         __CLASS__ . ':signIn',
                         $ex->getMessage()
                     );
             }
         }else{
-            $this->service('messenger')->send(
+            $this->ioc['messenger']->send(
                     'loginFail',
                     __CLASS__ . ':signIn',
                     self::INVALID_LOGIN
@@ -136,19 +136,19 @@ class Controller extends CoreController {
     }
     
     public function signOut(){
-        $this->service('security')->deauthenticate();
+        $this->ioc['security']->deauthenticate();
         $this->redirect($this->route('home'));
     }
     
     public function changePassword(){
-        $identity = $this->service('security')->identity();
+        $identity = $this->ioc['security']->identity();
         $this->state['timeOfDay'] = $this->renderTimeOfDay($identity);
         
-        if($this->service('messenger')->check('changeFail')){
-            $this->state['fail'] = $this->service('messenger')->read('changeFail');
+        if($this->ioc['messenger']->check('changeFail')){
+            $this->state['fail'] = $this->ioc['messenger']->read('changeFail');
         }
-        if($this->service('messenger')->check('changeSuccess')){
-            $this->state['success'] = $this->service('messenger')->read('changeSuccess');
+        if($this->ioc['messenger']->check('changeSuccess')){
+            $this->state['success'] = $this->ioc['messenger']->read('changeSuccess');
         }
             
         $this->render();
@@ -157,9 +157,9 @@ class Controller extends CoreController {
     public function postChangePassword($oldPassword, $newPassword, $confirmPassword){
         
         if($newPassword && $newPassword == $confirmPassword){
-            $identity = $this->service('security')->identity();
+            $identity = $this->ioc['security']->identity();
             // check if the old password is correct
-            $user = $this->service('database')->from('users')
+            $user = $this->ioc['database']->from('users')
                     ->where('UserId = :userId AND Password = :password')
                     ->param('userId', $identity['userId'])
                     ->param('password', hash('sha256', $oldPassword))
@@ -168,25 +168,25 @@ class Controller extends CoreController {
                     ->fetch()->get(0);
             if($user){
                 // now update the password since the old password is correct
-                $this->service('database')->table('users')
+                $this->ioc['database']->table('users')
                         ->update(array(
                             'UserId' => $user->userId,
                             'Password' => hash('sha256', $newPassword)
                             ));
-                $this->service('messenger')->send(
+                $this->ioc['messenger']->send(
                         'changeSuccess',
                         __CLASS__ . ':changePassword',
                         'Password changed successfully.'
                     );
             }else{
-                $this->service('messenger')->send(
+                $this->ioc['messenger']->send(
                         'changeFail',
                         __CLASS__ . ':changePassword',
                         'Your old password is invalid.'
                     );
             }
         }else{
-            $this->service('messenger')->send(
+            $this->ioc['messenger']->send(
                     'changeFail',
                     __CLASS__ . ':changePassword',
                     'Your new password is empty or it does not match with the confirmation password.'
