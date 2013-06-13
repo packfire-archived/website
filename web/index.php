@@ -13,7 +13,7 @@ use Packfire\Application\Http\Application as HttpApplication;
  * @ignore
  */
 
-$packfire = require(__DIR__ . '/pack/bootstrap.php');
+$packfire = require(__DIR__ . '/../app/bootstrap.php');
 if($packfire){
     $packfire->fire(new HttpApplication());
 }
